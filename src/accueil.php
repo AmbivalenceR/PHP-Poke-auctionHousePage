@@ -9,7 +9,14 @@
 </head>
 
 <body>
-
+    <header>
+        <nav>
+            <a href="accueil.php">Accueil</a>
+            <a href="creation-annonce.php">Création annonce</a>
+            <a href="annonce-unique.php">Annonce unique</a>
+            <a href="profil.php">Profil</a>
+        </nav>
+    </header>
     <section id="devNav">
         <form action="connexion-inscription.php" method="POST">
             <input type="submit" value="Connexion">
