@@ -35,7 +35,7 @@ function show_registration_form(string $category_type = "Choisir")
 
             <div>
                 <label>Email :</label>
-                <input type="email" name="choice" placeholder="email">
+                <input type="email" name="email" placeholder="email">
             </div>
 
             <div>
@@ -45,7 +45,7 @@ function show_registration_form(string $category_type = "Choisir")
 
             <div>
                 <label>Age:</label>
-                <input type="text" name="checkAge" placeholder="age">
+                <input type="text" name="age" placeholder="age">
             </div>
 
             <input type="submit" value="S'inscrire" />
