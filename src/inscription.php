@@ -2,7 +2,7 @@
 
 /* Imports */
 require __DIR__ . "/includes/inscription_form.php";
-// include __DIR__ . "/classes/Utilisateurs.class.php";
+include __DIR__ . "/classes/utilisateurs.classe.php";
 require_once __DIR__ . "/includes/db.php";
 
 
@@ -53,7 +53,10 @@ if ($category_type == "Inscription") {
 </head>
 
 <body>
-
+    <?php if ($result == null) { ?>
+        <p> Erreur, veuillez choisir une catégorie (Inscription ou Connexion) </p>
+    <?php } else {
+    } ?>
 </body>
 
 </html>
