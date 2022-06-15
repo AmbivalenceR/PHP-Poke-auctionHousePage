@@ -26,7 +26,7 @@ if (isset($_GET["category_type"])) {
 
         <!-- Formulaire de choix de type d'utilisateur -->
         <p>???</p>
-        <form action="index.php" method="GET">
+        <form action="connexion-inscription.php" method="GET">
             <select name="category_type">
                 <option value="Choisir" <?php if ($category_type == "Choisir") echo "selected"; ?>>Choisir</option>
                 <option value="Inscription" <?php if ($category_type == "Inscription") echo "selected"; ?>>Inscription</option>
@@ -38,7 +38,7 @@ if (isset($_GET["category_type"])) {
 
         <!-- Foirmulaire d'inscription -->
         <?php if ($category_type != null) {
-            // show_registration_form($category_type);
+            show_registration_form($category_type);
         } ?>
 
 

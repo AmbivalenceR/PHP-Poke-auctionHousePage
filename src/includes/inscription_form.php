@@ -19,7 +19,7 @@ function show_registration_form(string $category_type = "Choisir")
         }
         ?>
     </h2>
-    <form action="register.php" method="post">
+    <form action="inscription.php" method="post">
 
         <?php if ($category_type == "Inscription") { ?>
             <div>
