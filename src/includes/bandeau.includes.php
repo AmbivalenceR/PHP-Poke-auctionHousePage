@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 /**
  * BANDEAU SUPERIEUR DU SITE
  */
@@ -12,11 +14,11 @@ function afficherBandeau()
     <nav id="bandeauSup">
         <div class="logoBandeau"></div>
         <div>
-            <a href="">Accueil</a>
-            <a href="">Vendre</a>
-            <?php if (!$estConnecte) echo '<a href="">Connexion/Inscription </a>' ?>
-            <?php if ($estConnecte) echo '<a href="">Mon profil </a>' ?>
-            <?php if ($estConnecte) echo '<a href="">Mon historique </a>' ?>
+            <button><a href=""> Accueil </a></button>
+            <button><a href=""> Vendre </a></button>
+            <?php if (!$_SESSION["id"]) echo '<button><a href=""> Connexion/Inscription </a></button>' ?>
+            <?php if ($_SESSION["id"]) echo '<button><a href=""> Mon profil </a></button>' ?>
+            <?php if ($_SESSION["id"]) echo '<button><a href=""> Mon historique </a></button>' ?>
         </div>
     </nav>
 
