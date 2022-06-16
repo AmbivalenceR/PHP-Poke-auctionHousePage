@@ -3,7 +3,7 @@
 /**
  * Affichage du formulaire d'inscription / Connexion Utilisateur
  */
-function  affichage_form_inscription(string $category_type = "Choisir")
+function  affichage_form_inscription(string $category_type)
 { ?>
     <h2>
         <?php

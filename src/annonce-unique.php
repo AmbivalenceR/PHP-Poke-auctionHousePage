@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/includes/bandeau.includes.php";
 include __DIR__ . "/includes/annonce-unique.include.php";
+include __DIR__ . "/includes/request.enchere.include.php";
 ?>
 
 
@@ -37,7 +38,21 @@ include __DIR__ . "/includes/annonce-unique.include.php";
                 <p> ID utilisateur : <?= $annonce["id_utilisateur"] ?></p>
 
         <?php }
-        } ?>
+        }
+        // $enchere->afficherEnchere();
+        ?>
+        <form action="annonce-unique.php" method="post">
+            <div>
+                <label>prix offert :</label>
+                <input class="" type="text" name="prix_offert" placeholder="€" />
+            </div>
+
+            <!-- <div>
+                <label>Nom :</label>
+                <input class="" type="text" name="nom" placeholder="nom" />
+            </div> -->
+        </form>
+
     </main>
 </body>
 

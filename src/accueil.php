@@ -1,6 +1,9 @@
 <?php
 include __DIR__ . "/includes/request.annonce.include.php";
 include __DIR__ . "/includes/bandeau.includes.php";
+include __DIR__ . "/includes/request.enchere.include.php";
+
+
 ?>
 <!DOCTYPE html>
 
@@ -41,7 +44,10 @@ include __DIR__ . "/includes/bandeau.includes.php";
                 </form>
 
         <?php }
-        } ?>
+        }
+        $enchere->afficherEnchere();
+        ?>
+
     </main>
 
 
