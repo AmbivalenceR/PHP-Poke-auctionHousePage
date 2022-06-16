@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Utilisateurs;
 
 // Démarrage de session
@@ -45,13 +44,13 @@ class Utilisateurs
         global $dbh;
         $query = $dbh->prepare("SELECT * FROM utilisateurs WHERE email = ?;");
         $query->execute([$email]);
-        $donnesUtilisateur = $query->fetch(\PDO::FETCH_ASSOC);
+        $donneesUtilisateur = $query->fetch(\PDO::FETCH_ASSOC);
 
-        if ($donnesUtilisateur != false && password_verify($mdp, $donnesUtilisateur["mdp"])) {
-            $utilisateur = new Utilisateurs($donnesUtilisateur["nom"], $donnesUtilisateur["prenom"], $donnesUtilisateur["email"], $donnesUtilisateur["mdp"], $donnesUtilisateur["age"]);
+        if ($donneesUtilisateur != false && password_verify($mdp, $donneesUtilisateur["mdp"])) {
+            $utilisateur = new Utilisateurs($donneesUtilisateur["nom"], $donneesUtilisateur["prenom"], $donneesUtilisateur["email"], $donneesUtilisateur["mdp"], $donneesUtilisateur["age"]);
 
             // mise en mémoire des informations de l'utilisateur pour la session
-            $_SESSION["id"] = $donnesUtilisateur["id"];
+            $_SESSION["id"] = $donneesUtilisateur["id"];
             $_SESSION["prenom"] = $utilisateur["prenom"];
             echo "Bienvenue, " . $_SESSION["prenom"];
             return true;
