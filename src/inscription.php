@@ -53,11 +53,11 @@ if ($category_type == "Inscription") {
 </head>
 
 <body>
-    <?php if ($result == 1) { ?>
+<!--     <?php if ($result == 1) { ?>
         <p>Merci pour votre inscription <?php $utilisateur->prenom ?> !</p>
     <?php } else { ?>
         <p> Erreur, veuillez choisir une catégorie (Inscription ou Connexion) fdp </p>
-    <?php } ?>
+    <?php } ?> -->
 </body>
 
 </html>
