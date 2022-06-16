@@ -8,6 +8,7 @@ require_once __DIR__ . "/db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $prixDepart = $_POST["prixDepart"];
+    $prixActuel = $_POST["prixDepart"];
     $date = $_POST["date"];
     $dateFinEncheres = $_POST["dateFinEncheres"];
     $nomPokemon = $_POST["nomPokemon"];
@@ -25,9 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    $query = $dbh->prepare("INSERT INTO annonces (`prix_depart`,`date_annonce`,`date_de_fin`, `nom`,`pv`,`type`,`condition`,`rarete`,`n_serie`,`description`,`id_utilisateur`) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+    $query = $dbh->prepare("INSERT INTO annonces (`prix_depart`,`prix_actuel`, `date_annonce`,`date_de_fin`, `nom`,`pv`,`type`,`condition`,`rarete`,`n_serie`,`description`,`id_utilisateur`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
 
-    $query->execute([$prixDepart, $date, $dateFinEncheres, $nomPokemon, $pvPokemon, $typePokemon, $conditionCarte, $rareteCarte, $numeroSerieCarte, $descriptionPokemon, $id_utilisateur]);
+    $query->execute([$prixDepart, $prixActuel, $date, $dateFinEncheres, $nomPokemon, $pvPokemon, $typePokemon, $conditionCarte, $rareteCarte, $numeroSerieCarte, $descriptionPokemon, $id_utilisateur]);
 }
 
 /* Préparation de la requête */

@@ -9,6 +9,7 @@ class Annonce
     // Propriétés
     protected int $id;
     protected float $prixDepart;
+    protected float $prixActuel;
     protected string $date;
     protected string $dateFinEncheres;
     protected string $nomPokemon;
@@ -26,6 +27,7 @@ class Annonce
     {
 
         $this->prixDepart = $prixDepart;
+        $this->prixActuel = $prixDepart;
         $this->date = $date;
         $this->dateFinEncheres = $dateFinEncheres;
         $this->nomPokemon = $nomPokemon;
@@ -52,6 +54,7 @@ class Annonce
             <p> Numero de série de la carte : <?= $this->numeroSerieCarte ?></p>
             <p> État de la carte : <?= $this->conditionCarte ?></p>
             <p> Prix de départ de enchères : <?= $this->prixDepart ?></p>
+            <p> Prix actuel: <?= $this->prixActuel ?></p>
             <p> Date : <?= $this->date ?></p>
             <p> Date de fin des enchères : <?= $this->dateFinEncheres ?></p>
             <p> Dernière enchère : X</p>
