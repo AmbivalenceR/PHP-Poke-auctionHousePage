@@ -40,13 +40,12 @@ class Utilisateurs
     public static function connecterUtilisateur(string $email, string $mdp): bool
     {
         global $dbh;
-        $query = $dbh->prepare("SELECT * FROM utilisateurs WHERE email = ?;");
+        $query = $dbh->prepare("SELECT * FROM utilisateurs WHERE email = ?");
         $query->execute([$email]);
         $donneesUtilisateur = $query->fetch(\PDO::FETCH_ASSOC);
 
         if ($donneesUtilisateur != false && password_verify($mdp, $donneesUtilisateur["mdp"])) {
             // $utilisateur = new Utilisateurs($donneesUtilisateur["nom"], $donneesUtilisateur["prenom"], $donneesUtilisateur["email"], $donneesUtilisateur["mdp"], $donneesUtilisateur["age"]);
-
             // mise en mémoire des informations de l'utilisateur pour la session
             $_SESSION["id"] = $donneesUtilisateur["id"];
             $_SESSION["prenom"] = $donneesUtilisateur["prenom"];
