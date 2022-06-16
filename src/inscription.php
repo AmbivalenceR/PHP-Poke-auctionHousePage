@@ -35,7 +35,7 @@ if ($category_type == "Inscription") {
     $result = $utilisateur->inscriptionUtilisateur();
 } else if ($category_type == "Connexion") {
     $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
-    $mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
+    $mdp = $_POST["mdp"];
 
     /* Création de l'utilisateur */
     $utilisateur = Utilisateurs::connecterUtilisateur($email, $mdp);
