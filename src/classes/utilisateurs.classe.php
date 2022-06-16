@@ -2,9 +2,6 @@
 
 namespace Utilisateurs;
 
-// Démarrage de session
-session_start();
-
 // Création de la classe utilisateus
 
 class Utilisateurs
@@ -28,7 +25,6 @@ class Utilisateurs
 
     // Enregistrement de l'objet utilisateur dans la base de données
 
-    /* intégrer ici la partie de création de l'utilisateur qui se trouve actuellement dans la page PHP dédiée */
     public function inscriptionUtilisateur(): int
     {
         global $dbh;
