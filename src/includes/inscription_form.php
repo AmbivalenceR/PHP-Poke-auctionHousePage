@@ -19,7 +19,7 @@ function  affichage_form_inscription(string $category_type = "Choisir")
         }
         ?>
     </h2>
-    <form action="inscription.php" method="post">
+    <form action="profil.php" method="post">
 
         <?php if ($category_type == "Inscription") { ?>
 
