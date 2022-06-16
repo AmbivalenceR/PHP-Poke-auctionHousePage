@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/includes/bandeau.includes.php";
-
+$_SESSION["idAnnonce"] = $_GET["annonce"];
+var_dump($_SESSION["idAnnonce"]);
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,9 @@ include __DIR__ . "/includes/bandeau.includes.php";
     <header>
         <?php afficherBandeau(); ?>
     </header>
+    <main>
+
+    </main>
 </body>
 
 </html>
