@@ -2,8 +2,7 @@
 
 namespace Utilisateurs;
 
-// Démarrage de session
-session_start();
+
 
 // Création de la classe utilisateus
 

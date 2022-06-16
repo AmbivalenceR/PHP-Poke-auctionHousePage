@@ -56,7 +56,7 @@ function  affichage_form_inscription(string $category_type = "Choisir")
 
             <div>
                 <label>Email :</label>
-                <input type="email" name="choice" placeholder="email">
+                <input type="email" name="email" placeholder="email">
             </div>
 
             <div>
