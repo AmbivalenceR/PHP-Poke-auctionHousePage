@@ -1,9 +1,12 @@
 <?php
-
+//////// peut etre fusion avec Connexion-inscription ??////////
 /* Imports */
+
+use Utilisateurs\Utilisateurs;
+
 require __DIR__ . "/includes/inscription_form.php";
 include __DIR__ . "/classes/utilisateurs.classe.php";
-require_once __DIR__ . "/includes/db.php";
+require __DIR__ . "/includes/db.php";
 
 
 
@@ -18,22 +21,22 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 $category_type = $_POST["category_type"]; // Type d'utilisateur
 
 if ($category_type == "Inscription") {
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
-    $email = $_POST["email"];
-    $mdp = $_POST["mdp"];
-    $age = $_POST["age"];
+    $prenom = htmlspecialchars($_POST["prenom"]);
+    $nom = htmlspecialchars($_POST["nom"]);
+    $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
+    $mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
+    $age = htmlspecialchars($_POST["age"]);
 
-    /* Préparation de la requête */
-    $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mdp, age) VALUES (?, ?, ?, ?, ?);");
-    /* Exécution de la requête */
-    $result = $query->execute([$nom, $prenom, $email, $mdp, $age]);
+
+    /* Création de l'utilisateur */
+    $utilisateur = new Utilisateurs($prenom, $nom, $email, $mdp, $age);
+    $result = $utilisateur->inscriptionUtilisateur();
 } else if ($category_type == "Connexion") {
     $email = $_POST["email"];
     $mdp = $_POST["mdp"];
 
     /* Préparation de la requête */
-    $query = $dbh->prepare("SELECT email and mdp FROM utilisateurs WHERE email=? and mdp=?");
+    $query = $dbh->prepare("SELECT email and mdp FROM utilisateurs WHERE email=?");
     /* Exécution de la requête */
     $query->execute();
     /* Récupération des données retournées par la requête */
@@ -53,10 +56,11 @@ if ($category_type == "Inscription") {
 </head>
 
 <body>
-    <?php if ($result == null) { ?>
-        <p> Erreur, veuillez choisir une catégorie (Inscription ou Connexion) </p>
-    <?php } else {
-    } ?>
+    <?php if ($result == 1) { ?>
+        <p>Merci pour votre inscription <?php $utilisateur->prenom ?> !</p>
+    <?php } else { ?>
+        <p> Erreur, veuillez choisir une catégorie (Inscription ou Connexion) fdp </p>
+    <?php } ?>
 </body>
 
 </html>

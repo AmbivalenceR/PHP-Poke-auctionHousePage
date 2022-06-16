@@ -3,7 +3,7 @@
 /**
  * Affichage du formulaire d'inscription / Connexion Utilisateur
  */
-function show_registration_form(string $category_type = "Choisir")
+function  affichage_form_inscription(string $category_type = "Choisir")
 { ?>
     <h2>
         <?php
@@ -22,15 +22,15 @@ function show_registration_form(string $category_type = "Choisir")
     <form action="inscription.php" method="post">
 
         <?php if ($category_type == "Inscription") { ?>
-            <div>
-                <br>
-                <label>Nom :</label>
-                <input class="" type="text" name="nom" placeholder="nom" />
-            </div>
 
             <div>
                 <label>Prénom :</label>
-                <input class="" type="text" name="prenom" placeholder="Prenom" /> <br>
+                <input class="" type="text" name="prenom" placeholder="Prenom" />
+            </div>
+
+            <div>
+                <label>Nom :</label>
+                <input class="" type="text" name="nom" placeholder="nom" />
             </div>
 
             <div>

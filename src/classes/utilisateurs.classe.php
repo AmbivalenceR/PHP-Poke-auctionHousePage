@@ -29,7 +29,7 @@ class Utilisateurs
     // Enregistrement de l'objet utilisateur dans la base de données
 
     /* intégrer ici la partie de création de l'utilisateur qui se trouve actuellement dans la page PHP dédiée */
-    public function enregistrerUtilisateur(): int
+    public function inscriptionUtilisateur(): int
     {
         global $dbh;
         $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mdp, age) VALUES (?, ?, ?, ?, ?);");
