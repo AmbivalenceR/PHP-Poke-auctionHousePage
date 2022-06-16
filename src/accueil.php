@@ -39,6 +39,9 @@ include __DIR__ . "/includes/bandeau.includes.php";
                 <p> Dernière enchère : X</p>
                 <p> ID annonce : <?= $annonce["id"] ?></p>
                 <p> ID utilisateur : <?= $annonce["id_utilisateur"] ?></p>
+                <form action="annonce-unique.php" method="GET">
+                    <button type="submit" name="annonce" value="<?= $annonce["id"]; ?>">Voir l'annonce</button>
+                </form>
 
         <?php }
         } ?>
