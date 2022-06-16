@@ -5,15 +5,35 @@ use Annonce\Annonce;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    $prixDepart = $_POST["prixDepart"];
+    $date = $_POST["date"];
+    $dateFinEncheres = $_POST["dateFinEncheres"];
     $nomPokemon = $_POST["nomPokemon"];
-    $typePokemon = $_POST["typePokemon"];
     $pvPokemon = $_POST["pvPokemon"];
-    $descriptionPokemon = $_POST["descriptionPokemon"];
+    $typePokemon = $_POST["typePokemon"];
+    $conditionCarte = $_POST["conditionCarte"];
     $rareteCarte = $_POST["rareteCarte"];
     $numeroSerieCarte = $_POST["numeroSerieCarte"];
-    $conditionCarte = $_POST["conditionCarte"];
-    $prixDepart = $_POST["prixDepart"];
-    $dateFinEncheres = $_POST["dateFinEncheres"];
+    $descriptionPokemon = $_POST["descriptionPokemon"];
+    $id_utilisateur = 1;
 
-    $annonceCree = new Annonce($nomPokemon, $typePokemon, $pvPokemon, $descriptionPokemon, $rareteCarte, $numeroSerieCarte, $conditionCarte, $prixDepart, $dateFinEncheres);
+
+
+    $annonceCree = new Annonce($prixDepart, $date, $dateFinEncheres, $nomPokemon, $pvPokemon, $typePokemon, $conditionCarte, $rareteCarte, $numeroSerieCarte, $descriptionPokemon, $id_utilisateur);
+
+    require_once __DIR__ . "/db.php";
+
+    $query = $dbh->prepare("INSERT INTO annonces (`prix_depart`,`date_annonce`,`date_de_fin`, `nom`,`pv`,`type`,`condition`,`rarete`,`n_serie`,`description`,`id_utilisateur`) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+
+    $query->execute([$prixDepart, $date, $dateFinEncheres, $nomPokemon, $pvPokemon, $typePokemon, $conditionCarte, $rareteCarte, $numeroSerieCarte, $descriptionPokemon, $id_utilisateur]);
+
+    /* Préparation de la requête */
+    $query = $dbh->prepare("SELECT * FROM annonces;");
+
+    /* Exécution de la requête */
+    $query->execute();
+
+    $annonces = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    // exec la recupération de l'id pour la stocker
 }

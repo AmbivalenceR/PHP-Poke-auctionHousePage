@@ -58,14 +58,16 @@ include __DIR__ . "/includes/request.annonce.include.php";
             </div>
             <div>
                 <label for="prixDepart">Prix de départ des enchères : </label>
-                <input type="text" name="prixDepart" id="prixDepart">
+                <input type="number" name="prixDepart" id="prixDepart">
             </div>
             <div>
                 <label for="dateFinEncheres">Date de fin des enchères : </label>
                 <input type="text" name="dateFinEncheres" id="dateFinEncheres">
             </div>
+            <input type="text" name="date" value="<?= date('Y-m-d'); ?>">
             <input type="submit" value="Poster l'annonce">
         </form>
+
     </main>
     <footer></footer>
 </body>

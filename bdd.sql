@@ -8,15 +8,16 @@ CREATE TABLE `utilisateurs` (
 );
 
 CREATE TABLE `annonces` (
-   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+   `id` int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY, 
    `prix_depart` float NOT NULL,
+   `date_annonce`date NOT NULL,
    `date_de_fin` datetime NOT NULL,
    `nom` varchar(255) NOT NULL, 
    `pv` int(4) NOT NULL,
    `type` varchar(255) NOT NULL,
    `condition`varchar(20) NOT NULL,
    `rarete` varchar(25) NOT NULL,
-   `n_serie` varchar(30) NOT NULL,
+   `n_serie` varchar(30) UNIQUE NOT NULL,
    `description` TEXT NOT NULL,
    `id_utilisateur` int(11) NOT NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id)
