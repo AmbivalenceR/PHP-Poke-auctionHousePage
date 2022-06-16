@@ -7,7 +7,7 @@ namespace Utilisateurs;
 class Utilisateurs
 {
     // Propriétés
-    protected int $id;
+
     protected string $prenom;
     protected string $nom;
     protected string $email;
@@ -15,9 +15,9 @@ class Utilisateurs
     protected int $age;
 
     // Constructeur
-    public function __construct(int $id, string $prenom, string $nom, string $email, string $mdp, int $age)
+    public function __construct(string $prenom, string $nom, string $email, string $mdp, int $age)
     {
-        $this->id = $id;
+
         $this->prenom = $prenom;
         $this->nom = $nom;
         $this->email = $email;
@@ -28,7 +28,7 @@ class Utilisateurs
     // Sauvegarde de l'objet utilisateur dans la base de données
 
     /* intégrer ici la partie de création de l'utilisateur qui se trouve actuellement dans la page PHP dédiée */
-    public function sauvegarder(): int
+    public function inscriptionUtilisateur(): int
     {
         global $dbh;
         $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mdp, age) VALUES (?, ?, ?, ?, ?);");
