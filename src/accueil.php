@@ -16,7 +16,10 @@ include __DIR__ . "/includes/bandeau.includes.php";
 
 <body>
     <header>
-        <?php afficherBandeau(); ?>
+        <?php afficherBandeau();
+
+        ?>
+
     </header>
     <main>
         <?php if (isset($annonces)) {
