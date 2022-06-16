@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . "/../classes/enchere.classe.php";
+
 require_once __DIR__ . "/db.php";
 
 use Enchere\Enchere;
