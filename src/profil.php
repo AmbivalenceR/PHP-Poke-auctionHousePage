@@ -22,6 +22,7 @@ include __DIR__ . "/includes/bandeau.includes.php";
         <?php afficherBandeau(); ?>
     </header>
     <main>
+        <h2>PAGE DU PROFIL <?= $_SESSION["prenom"] ?></h2>
 
     </main>
     <footer></footer>
