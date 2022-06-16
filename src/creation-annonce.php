@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . "/includes/request.annonce.include.php";
+include __DIR__ . "/includes/bandeau.includes.php";
 
 ?>
 
@@ -16,9 +17,11 @@ include __DIR__ . "/includes/request.annonce.include.php";
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <?php afficherBandeau(); ?>
+    </header>
     <main>
-        <form action="profil.php" method="post">
+        <form action="accueil.php" method="post">
             <div>
                 <label for="nomPokemon">Nom du Pokémon : </label>
                 <input type="text" name="nomPokemon" id="nomPokemon">
@@ -64,7 +67,7 @@ include __DIR__ . "/includes/request.annonce.include.php";
                 <label for="dateFinEncheres">Date de fin des enchères : </label>
                 <input type="text" name="dateFinEncheres" id="dateFinEncheres">
             </div>
-            <input type="text" name="date" value="<?= date('Y-m-d'); ?>">
+            <input type="hidden" name="date" value="<?= date('Y-m-d'); ?>">
             <input type="submit" value="Poster l'annonce">
         </form>
 

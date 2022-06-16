@@ -11,16 +11,19 @@ function afficherBandeau()
     // COMMENT VERIFIER QUE L'UTILISATEUR EST BIEN CONNECTE ?
 
 ?>
-    <nav id="bandeauSup">
-        <div class="logoBandeau"></div>
-        <div>
-            <button><a href=""> Accueil </a></button>
-            <button><a href=""> Vendre </a></button>
-            <?php if (!$_SESSION["id"]) echo '<button><a href=""> Connexion/Inscription </a></button>' ?>
-            <?php if ($_SESSION["id"]) echo '<button><a href=""> Mon profil </a></button>' ?>
-            <?php if ($_SESSION["id"]) echo '<button><a href=""> Mon historique </a></button>' ?>
-        </div>
+
+    <nav>
+        <a href="accueil.php">Accueil</a>
+        <a href="creation-annonce.php">Création annonce</a>
+        <a href="annonce-unique.php">Annonce unique</a>
+        <a href="profil.php">Profil</a>
     </nav>
+    <section id="devNav">
+        <form action="connexion-inscription.php" method="POST">
+            <input type="submit" value="Connexion">
+        </form>
+    </section>
+
 
 
 <?php

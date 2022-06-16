@@ -10,6 +10,7 @@ CREATE TABLE `utilisateurs` (
 CREATE TABLE `annonces` (
    `id` int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY, 
    `prix_depart` float NOT NULL,
+   `prix_actuel` float NOT NULL,
    `date_annonce`date NOT NULL,
    `date_de_fin` datetime NOT NULL,
    `nom` varchar(255) NOT NULL, 

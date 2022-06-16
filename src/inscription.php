@@ -7,6 +7,7 @@ use Utilisateurs\Utilisateurs;
 require __DIR__ . "/includes/inscription_form.php";
 include __DIR__ . "/classes/utilisateurs.classe.php";
 require __DIR__ . "/includes/db.php";
+include __DIR__ . "/includes/bandeau.includes.php";
 
 /* Démarrage de la session */
 session_start();
@@ -53,6 +54,9 @@ if ($category_type == "Inscription") {
 </head>
 
 <body>
+    <header>
+        <?php afficherBandeau(); ?>
+    </header>
     <!-- <?php if ($result == 1) { ?>
         <p>Merci pour votre inscription <?php $utilisateur->prenom ?> !</p>
     <?php } else { ?>

@@ -1,6 +1,9 @@
 <?php
 require __DIR__ . "/includes/inscription_form.php";
 
+include __DIR__ . "/includes/bandeau.includes.php";
+
+
 /* Traitement de la requête */
 
 
@@ -21,6 +24,9 @@ if (isset($_GET["category_type"])) {
 </head>
 
 <body>
+    <header>
+        <?php afficherBandeau(); ?>
+    </header>
     <main>
         <h1>Inscription / Connexion</h1>
 
