@@ -1,5 +1,5 @@
 <?php
-
+//
 include __DIR__ . "/accueil.php";
 include __DIR__ . "/includes/request.annonce.include.php";
 
