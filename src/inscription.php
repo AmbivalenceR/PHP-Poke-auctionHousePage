@@ -8,7 +8,8 @@ require __DIR__ . "/includes/inscription_form.php";
 include __DIR__ . "/classes/utilisateurs.classe.php";
 require __DIR__ . "/includes/db.php";
 
-
+/* Démarrage de la session */
+session_start();
 
 
 /* Vérification du verbe HTTP */
@@ -32,15 +33,11 @@ if ($category_type == "Inscription") {
     $utilisateur = new Utilisateurs($prenom, $nom, $email, $mdp, $age);
     $result = $utilisateur->inscriptionUtilisateur();
 } else if ($category_type == "Connexion") {
-    $email = $_POST["email"];
-    $mdp = $_POST["mdp"];
+    $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
+    $mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
 
-    /* Préparation de la requête */
-    $query = $dbh->prepare("SELECT email and mdp FROM utilisateurs WHERE email=?");
-    /* Exécution de la requête */
-    $query->execute();
-    /* Récupération des données retournées par la requête */
-    $Utilisateurs = $query->fetchAll(PDO::FETCH_ASSOC);
+    /* Création de l'utilisateur */
+    $utilisateur = Utilisateurs::connecterUtilisateur($email, $mdp);
 }
 
 
