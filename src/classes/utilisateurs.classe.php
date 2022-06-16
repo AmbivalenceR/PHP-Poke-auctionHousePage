@@ -25,6 +25,16 @@ class Utilisateurs
         $this->age = $age;
     }
 
+    // Sauvegarde de l'objet utilisateur dans la base de données
+
+    /* intégrer ici la partie de création de l'utilisateur qui se trouve actuellement dans la page PHP dédiée */
+    public function sauvegarder(): int
+    {
+        global $dbh;
+        $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mdp, age) VALUES (?, ?, ?, ?, ?);");
+        return $query->execute([$this->nom, $this->prenom, $this->email, $this->mdp, $this->age]);
+    }
+
     // Methode pour affichage de l'utilisateur
     public function afficherUtilisateur(): void
     {
