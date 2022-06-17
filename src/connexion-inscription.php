@@ -30,11 +30,12 @@ if (isset($_GET["category_type"])) {
     <main>
         <h1>Inscription / Connexion</h1>
 
+
         <!-- Formulaire de choix de type d'utilisateur -->
         <form action="connexion-inscription.php" method="GET">
 
-            <input type="submit" name="category_type" value="Inscription"></option>
-            <input type="submit" name="category_type" value="Connexion"></option>
+            <input type="submit" name="category_type" value="Inscription">
+            <input type="submit" name="category_type" value="Connexion">
 
         </form>
 

@@ -2,8 +2,6 @@
 
 namespace Utilisateurs;
 
-
-
 // Création de la classe utilisateus
 
 class Utilisateurs
@@ -49,7 +47,6 @@ class Utilisateurs
             // mise en mémoire des informations de l'utilisateur pour la session
             $_SESSION["id_utilisateur"] = $donneesUtilisateur["id"];
             $_SESSION["prenom"] = $donneesUtilisateur["prenom"];
-            // echo "Bienvenue, " . $_SESSION["prenom"];
             return true;
         } else {
             echo "Echec de connexion : email ou mot de passe incorrect.";
