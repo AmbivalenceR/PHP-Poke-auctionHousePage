@@ -6,6 +6,7 @@ include __DIR__ . "/includes/bandeau.includes.php";
 /* Traitement de la requête */
 
 
+
 $category_type = null;
 if (isset($_GET["category_type"])) {
     $category_type = $_GET["category_type"];
@@ -37,7 +38,7 @@ if (isset($_GET["category_type"])) {
 
         </form>
 
-        <!-- Foirmulaire d'inscription -->
+        <!-- Formulaire d'inscription -->
         <?php if ($category_type != null) {
             affichage_form_inscription($category_type);
         } ?>

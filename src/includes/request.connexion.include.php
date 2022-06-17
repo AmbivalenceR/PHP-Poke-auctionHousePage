@@ -19,6 +19,7 @@ require __DIR__ . "/db.php";
 // }
 
 /* Récupération des valeurs  */
+
 $category_type = $_POST["category_type"];
 // Type d'utilisateur
 
