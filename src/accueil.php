@@ -48,7 +48,7 @@ include __DIR__ . "/includes/request.enchere.include.php";
 
         <?php }
         }
-        $enchere->afficherEnchere();
+
         ?>
     </main>
 
