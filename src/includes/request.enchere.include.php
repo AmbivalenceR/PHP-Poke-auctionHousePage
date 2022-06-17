@@ -9,8 +9,8 @@ require __DIR__ . "/db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $prix_offert = $_POST["prix_offert"];
-    $id_utilisateur = $_SESSION["id"];
-    $id_annonce = $_SESSION["idAnnonce"];
+    $id_utilisateur = $_SESSION["id_utilisateur"];
+    $id_annonce = $_SESSION["id_annonce"];
 
     // $enchere = new Enchere($prix_offert, $id_utilisateur, $id_annonce);
     // $resultatEnchere = $enchere->requeteEnchere();
@@ -20,4 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Exécution de la requête
     $result = $query->execute([$prix_offert, $id_utilisateur,  $id_annonce]);
     $enchere = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = $dbh->prepare("SELECT * FROM encheres WHERE id_annonce=?;");
+
+    // Exécution de la requête //
+    $query->execute([$_SESSION["idAnnonce"]]);
+
+    $enchererino = $query->fetchAll(PDO::FETCH_ASSOC);
 }

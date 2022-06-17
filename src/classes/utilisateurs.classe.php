@@ -45,7 +45,7 @@ class Utilisateurs
         if ($donneesUtilisateur != false && password_verify($mdp, $donneesUtilisateur["mdp"])) {
             // $utilisateur = new Utilisateurs($donneesUtilisateur["nom"], $donneesUtilisateur["prenom"], $donneesUtilisateur["email"], $donneesUtilisateur["mdp"], $donneesUtilisateur["age"]);
             // mise en mémoire des informations de l'utilisateur pour la session
-            $_SESSION["id"] = $donneesUtilisateur["id"];
+            $_SESSION["id_utilisateur"] = $donneesUtilisateur["id"];
             $_SESSION["prenom"] = $donneesUtilisateur["prenom"];
             return true;
         } else {
@@ -60,7 +60,7 @@ class Utilisateurs
 ?>
         <div class="divUtilisateur">
             <h2 class="nomUtilisateur"><?= $this->prenom . " " . $this->nom ?></h2>
-            <p> identifiant : <?= $_SESSION["id"] ?> </p>
+            <p> identifiant : <?= $_SESSION["id_utilisateur"] ?> </p>
             <p> email : <?= $this->email ?> </p>
             <p> age : <?= $this->age ?> </p>
         </div>

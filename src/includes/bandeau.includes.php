@@ -19,12 +19,12 @@ function afficherBandeau()
         </div>
         <div>
 
-            <button><a href=<?php if (!isset($_SESSION["id"])) echo 'connexion-inscription.php';
+            <button><a href=<?php if (!isset($_SESSION["id_utilisateur"])) echo 'connexion-inscription.php';
                             else  echo 'creation-annonce.php' ?>> Vendre </a></button>
-            <?php if (!isset($_SESSION["id"])) echo '<button><a href="connexion-inscription.php"> Connexion/Inscription </a></button>' ?>
-            <?php if (isset($_SESSION["id"])) echo '<button><a href="profil.php"> Mon profil </a></button>' ?>
-            <?php if (isset($_SESSION["id"])) echo '<button><a href=""> Mon historique </a></button>' ?>
-            <?php if (isset($_SESSION["id"])) echo '<button><a href="deconnexion.php"> Déconnexion </a></button>' ?>
+            <?php if (!isset($_SESSION["id_utilisateur"])) echo '<button><a href="connexion-inscription.php"> Connexion/Inscription </a></button>' ?>
+            <?php if (isset($_SESSION["id_utilisateur"])) echo '<button><a href="profil.php"> Mon profil </a></button>' ?>
+            <?php if (isset($_SESSION["id_utilisateur"])) echo '<button><a href=""> Mon historique </a></button>' ?>
+            <?php if (isset($_SESSION["id_utilisateur"])) echo '<button><a href="deconnexion.php"> Déconnexion </a></button>' ?>
 
 
 

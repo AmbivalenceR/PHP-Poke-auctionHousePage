@@ -35,19 +35,9 @@ class Enchere
     // }
 
 
-
-
     // Methode pour affichage de l'annonce
     public function afficherEnchere(): void
+
     {
-?>
-        <div class="">
-            <p> Prix offert : <?= $this->prix_offert ?> €</p>
-            <p> De <?= $this->id_utilisateur ?>. </p>
-
-
-        </div>
-<?php
-
     }
 }
