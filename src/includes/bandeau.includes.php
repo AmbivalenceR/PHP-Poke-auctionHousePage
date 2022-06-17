@@ -17,6 +17,7 @@ function afficherBandeau()
         <a href="creation-annonce.php">Création annonce</a>
         <a href="annonce-unique.php">Annonce unique</a>
         <a href="profil.php">Profil</a>
+        <a href="inscription.php">Inscription</a>
     </nav>
     <section id="devNav">
         <form action="connexion-inscription.php" method="POST">

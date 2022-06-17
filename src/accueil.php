@@ -50,7 +50,6 @@ include __DIR__ . "/includes/request.enchere.include.php";
         }
 
         ?>
-
     </main>
 
 
