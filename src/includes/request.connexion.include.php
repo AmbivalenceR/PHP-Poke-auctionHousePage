@@ -22,15 +22,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
         $mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
         $age = htmlspecialchars($_POST["age"]);
+        $passePourConnexion = $_POST["mdp"];
 
 
         /* Création de l'utilisateur */
         $utilisateur = new Utilisateurs($prenom, $nom, $email, $mdp, $age);
         $result = $utilisateur->inscriptionUtilisateur();
+        /* Connexion de l'utilisateur à la suite de son inscription */
+        Utilisateurs::connecterUtilisateur($email, $passePourConnexion);
     } else if ($category_type == "Connexion") {
         $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
         $mdp = $_POST["mdp"];
-        /* Création de l'utilisateur */
+        /* Connexion de l'utilisateur */
         $utilisateur = Utilisateurs::connecterUtilisateur($email, $mdp);
     }
 }

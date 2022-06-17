@@ -25,15 +25,15 @@ class Utilisateurs
 
     // Enregistrement de l'objet utilisateur dans la base de données
 
-    public function inscriptionUtilisateur(): int
+    public function inscriptionUtilisateur()
     {
         global $dbh;
         $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mdp, age) VALUES (?, ?, ?, ?, ?);");
-        return $query->execute([$this->nom, $this->prenom, $this->email, $this->mdp, $this->age]);
+        $query->execute([$this->nom, $this->prenom, $this->email, $this->mdp, $this->age]);
     }
 
     /* Méthode statique de récupération d'un utilisateur dans la base de données
-      par son email. Cette méthode retourne une instance la classe User */
+      par son email. Cette méthode retourne une instance la classe Utilisateurs */
 
     public static function connecterUtilisateur(string $email, string $mdp): bool
     {
@@ -43,7 +43,7 @@ class Utilisateurs
         $donneesUtilisateur = $query->fetch(\PDO::FETCH_ASSOC);
 
         if ($donneesUtilisateur != false && password_verify($mdp, $donneesUtilisateur["mdp"])) {
-            // $utilisateur = new Utilisateurs($donneesUtilisateur["nom"], $donneesUtilisateur["prenom"], $donneesUtilisateur["email"], $donneesUtilisateur["mdp"], $donneesUtilisateur["age"]);
+            $utilisateur = new Utilisateurs($donneesUtilisateur["nom"], $donneesUtilisateur["prenom"], $donneesUtilisateur["email"], $donneesUtilisateur["mdp"], $donneesUtilisateur["age"]);
             // mise en mémoire des informations de l'utilisateur pour la session
             $_SESSION["id_utilisateur"] = $donneesUtilisateur["id"];
             $_SESSION["prenom"] = $donneesUtilisateur["prenom"];
