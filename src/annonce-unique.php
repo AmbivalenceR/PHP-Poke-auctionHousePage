@@ -49,14 +49,18 @@ include __DIR__ . "/includes/request.enchere.include.php";
         }
         ?>
 
+        <?php if (date("Y-m-d H:i:s") <= $annonce["date_de_fin"]) { ?>
 
-        <form action="annonce-unique.php" method="post">
-            <div>
-                <label>prix offert :</label>
-                <input class="" type="text" name="prix_offert" placeholder="€" />
-            </div>
-        </form>
+            <form action="annonce-unique.php" method="post">
+                <div>
+                    <label>prix offert :</label>
+                    <input class="" type="text" name="prix_offert" placeholder="€" />
+                </div>
+            </form>
 
+        <?php } else { ?>
+            <p>Enchère terminée</p>
+        <?php } ?>
     </main>
 </body>
 
