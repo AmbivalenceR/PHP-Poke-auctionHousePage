@@ -1,11 +1,12 @@
 <?php
 /* new PDO */
 require_once __DIR__ . "/db.php";
+if (isset($_SESSION["id_utilisateur"])) {
+    /* Préparation de la requête */
+    $query = $dbh->prepare("SELECT * FROM annonces WHERE id_utilisateur = ?;");
 
-/* Préparation de la requête */
-$query = $dbh->prepare("SELECT * FROM annonces WHERE id_utilisateur = ?;");
+    /* Exécution de la requête */
+    $query->execute([$_SESSION["id_utilisateur"]]);
 
-/* Exécution de la requête */
-$query->execute([$_SESSION["id_utilisateur"]]);
-
-$annoncesId = $query->fetchAll(PDO::FETCH_ASSOC);
+    $annoncesId = $query->fetchAll(PDO::FETCH_ASSOC);
+}

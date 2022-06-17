@@ -25,29 +25,32 @@ include __DIR__ . "/includes/profil.annonce.include.php";
         <?php afficherBandeau(); ?>
     </header>
     <main>
+        <?php if (isset($_SESSION["id_utilisateur"])) { ?>
+            <h2> Bienvenue <?= $_SESSION["prenom"] ?>. Votre identifiant est <?= $_SESSION["id_utilisateur"] ?> .</h2>
 
-        <h2> Bienvenue <?= $_SESSION["prenom"] ?>. Votre identifiant est <?= $_SESSION["id_utilisateur"] ?> .</h2>
+            <?php if (isset($annoncesId)) {
+                foreach ($annoncesId as $index => $annonce) { ?>
 
-        <?php if (isset($annoncesId)) {
-            foreach ($annoncesId as $index => $annonce) { ?>
+                    <h2 class="nomPokemon"><?= $annonce["nom"] ?></h2>
+                    <p> Type : <?= $annonce["type"] ?> </p>
+                    <p> PV : <?= $annonce["pv"] ?> </p>
+                    <p> Description du Pokemon : <?= $annonce["description"] ?></p>
+                    <p> Rareté de la carte : <?= $annonce["rarete"] ?></p>
+                    <p> Numero de série de la carte : <?= $annonce["n_serie"] ?></p>
+                    <p> État de la carte : <?= $annonce["condition"] ?></p>
+                    <p> Prix de départ de enchères : <?= $annonce["prix_depart"] ?></p>
+                    <p> Prix actuel : <?= $annonce["prix_actuel"] ?></p>
+                    <p> Date : <?= $annonce["date_annonce"] ?></p>
+                    <p> Date de fin des enchères : <?= $annonce["date_de_fin"] ?></p>
+                    <p> Dernière enchère : X</p>
+                    <p> ID annonce : <?= $annonce["id"] ?></p>
+                    <p> ID utilisateur : <?= $annonce["id_utilisateur"] ?></p>
 
-                <h2 class="nomPokemon"><?= $annonce["nom"] ?></h2>
-                <p> Type : <?= $annonce["type"] ?> </p>
-                <p> PV : <?= $annonce["pv"] ?> </p>
-                <p> Description du Pokemon : <?= $annonce["description"] ?></p>
-                <p> Rareté de la carte : <?= $annonce["rarete"] ?></p>
-                <p> Numero de série de la carte : <?= $annonce["n_serie"] ?></p>
-                <p> État de la carte : <?= $annonce["condition"] ?></p>
-                <p> Prix de départ de enchères : <?= $annonce["prix_depart"] ?></p>
-                <p> Prix actuel : <?= $annonce["prix_actuel"] ?></p>
-                <p> Date : <?= $annonce["date_annonce"] ?></p>
-                <p> Date de fin des enchères : <?= $annonce["date_de_fin"] ?></p>
-                <p> Dernière enchère : X</p>
-                <p> ID annonce : <?= $annonce["id"] ?></p>
-                <p> ID utilisateur : <?= $annonce["id_utilisateur"] ?></p>
-
-        <?php }
-        } ?>
+            <?php }
+            }
+        } else { ?>
+            <p>connectez-vous</p>
+        <?php } ?>
     </main>
     <footer></footer>
 </body>

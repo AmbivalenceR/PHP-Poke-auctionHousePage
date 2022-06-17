@@ -43,11 +43,6 @@ if (isset($_GET["category_type"])) {
             affichage_form_inscription($category_type);
         } ?>
 
-
-
-
-
-
     </main>
 
 </body>
