@@ -41,7 +41,7 @@ include __DIR__ . "/includes/request.enchere.include.php";
         }
         ?>
         <?php if (isset($enchererino)) {
-            foreach ($enchererino as $index => $enchere) { ?>
+            foreach (array_reverse($enchererino) as $index => $enchere) { ?>
 
                 <p> Prix offert : <?= $enchere["prix_offert"] ?> €</p>
                 <p> De <?= $enchere["id_utilisateur"] ?>. </p>
