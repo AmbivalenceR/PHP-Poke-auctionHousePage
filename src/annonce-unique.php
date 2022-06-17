@@ -39,18 +39,22 @@ include __DIR__ . "/includes/request.enchere.include.php";
 
         <?php }
         }
-        // $enchere->afficherEnchere();
         ?>
+        <?php if (isset($enchererino)) {
+            foreach ($enchererino as $index => $enchere) { ?>
+
+                <p> Prix offert : <?= $enchere["prix_offert"] ?> €</p>
+                <p> De <?= $enchere["id_utilisateur"] ?>. </p>
+        <?php }
+        }
+        ?>
+
+
         <form action="annonce-unique.php" method="post">
             <div>
                 <label>prix offert :</label>
                 <input class="" type="text" name="prix_offert" placeholder="€" />
             </div>
-
-            <!-- <div>
-                <label>Nom :</label>
-                <input class="" type="text" name="nom" placeholder="nom" />
-            </div> -->
         </form>
 
     </main>
