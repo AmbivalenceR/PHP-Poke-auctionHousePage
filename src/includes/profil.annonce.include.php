@@ -6,6 +6,6 @@ require_once __DIR__ . "/db.php";
 $query = $dbh->prepare("SELECT * FROM annonces WHERE id_utilisateur = ?;");
 
 /* Exécution de la requête */
-$query->execute([$_SESSION["id"]]);
+$query->execute([$_SESSION["id_utilisateur"]]);
 
 $annoncesId = $query->fetchAll(PDO::FETCH_ASSOC);

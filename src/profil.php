@@ -26,7 +26,7 @@ include __DIR__ . "/includes/profil.annonce.include.php";
     </header>
     <main>
 
-        <h2> Bienvenue <?= $_SESSION["prenom"] ?>. Votre identifiant est <?= $_SESSION["id"] ?> .</h2>
+        <h2> Bienvenue <?= $_SESSION["prenom"] ?>. Votre identifiant est <?= $_SESSION["id_utilisateur"] ?> .</h2>
 
         <?php if (isset($annoncesId)) {
             foreach ($annoncesId as $index => $annonce) { ?>

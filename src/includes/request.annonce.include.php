@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rareteCarte = $_POST["rareteCarte"];
     $numeroSerieCarte = $_POST["numeroSerieCarte"];
     $descriptionPokemon = $_POST["descriptionPokemon"];
-    $id_utilisateur = $_SESSION["id"];
+    $id_utilisateur = $_SESSION["id_utilisateur"];
 
 
 
