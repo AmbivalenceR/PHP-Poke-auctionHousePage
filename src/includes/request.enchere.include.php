@@ -9,8 +9,8 @@ require __DIR__ . "/db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $prix_offert = $_POST["prix_offert"];
-    $id_utilisateur = $_SESSION["id"];
-    $id_annonce = $_SESSION["idAnnonce"];
+    $id_utilisateur = $_SESSION["id_utilisateur"];
+    $id_annonce = $_SESSION["id_annonce"];
 
     // $enchere = new Enchere($prix_offert, $id_utilisateur, $id_annonce);
     // $resultatEnchere = $enchere->requeteEnchere();

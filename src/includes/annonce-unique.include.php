@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $_SESSION["idAnnonce"] = $_GET["annonce"];
+    $_SESSION["id_annonce"] = $_GET["annonce"];
 }
 
 /* new PDO */
@@ -11,6 +11,6 @@ require_once __DIR__ . "/db.php";
 $query = $dbh->prepare("SELECT * FROM annonces WHERE id = ?;");
 
 /* Exécution de la requête */
-$query->execute([$_SESSION["idAnnonce"]]);
+$query->execute([$_SESSION["id_annonce"]]);
 
 $annonceSelectionne = $query->fetchAll(PDO::FETCH_ASSOC);
