@@ -11,15 +11,17 @@ class Enchere
     protected float $prix_offert;
     protected int $id_utilisateur;
     protected int $id_annonce;
+    protected string $id_prenom;
 
 
     // Constructeur
-    public function __construct(float $prix_offert, int $id_utilisateur, int $id_annonce)
+    public function __construct(float $prix_offert, int $id_utilisateur, int $id_annonce, string $id_prenom)
     {
 
         $this->prix_offert = $prix_offert;
         $this->id_utilisateur = $id_utilisateur;
         $this->id_annonce = $id_annonce;
+        $this->id_prenom = $id_prenom;
     }
 
 
@@ -35,9 +37,4 @@ class Enchere
     // }
 
 
-    // Methode pour affichage de l'annonce
-    public function afficherEnchere(): void
-
-    {
-    }
 }
