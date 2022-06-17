@@ -5,6 +5,7 @@ use Utilisateurs\Utilisateurs;
 
 require __DIR__ . "/inscription_form.php";
 include __DIR__ . "/../classes/utilisateurs.classe.php";
+
 require __DIR__ . "/db.php";
 
 

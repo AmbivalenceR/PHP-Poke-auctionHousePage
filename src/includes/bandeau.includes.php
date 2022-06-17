@@ -12,7 +12,7 @@ function afficherBandeau()
 
 ?>
 
-    <!--     <nav>
+    <nav>
         <a href="accueil.php">Accueil</a>
         <a href="creation-annonce.php">Création annonce</a>
         <a href="annonce-unique.php">Annonce unique</a>
@@ -22,7 +22,7 @@ function afficherBandeau()
         <form action="connexion-inscription.php" method="POST">
             <input type="submit" value="Connexion">
         </form>
-    </section> -->
+    </section>
 
 
     <!-- BANDEAU SUPERIEUR DU SITE -->
