@@ -1,8 +1,7 @@
 <?php
 //////// peut etre fusion avec Connexion-inscription ??////////
 include __DIR__ . "/includes/request.connexion.php";
-
-
+include __DIR__ . "/includes/bandeau.includes.php";
 
 ?>
 
@@ -16,7 +15,7 @@ include __DIR__ . "/includes/request.connexion.php";
 
 <body>
     <header>
-
+        <?php afficherBandeau(); ?>
     </header>
     <!-- <?php if ($result == 1) { ?>
         <p>Merci pour votre inscription <?php $utilisateur->prenom ?> !</p>

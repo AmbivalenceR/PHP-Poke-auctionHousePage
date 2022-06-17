@@ -12,17 +12,18 @@ function afficherBandeau()
 
 ?>
 
-    <!--     <nav>
+    <nav>
         <a href="accueil.php">Accueil</a>
         <a href="creation-annonce.php">Création annonce</a>
         <a href="annonce-unique.php">Annonce unique</a>
         <a href="profil.php">Profil</a>
+        <a href="inscription.php">Inscription</a>
     </nav>
     <section id="devNav">
         <form action="connexion-inscription.php" method="POST">
             <input type="submit" value="Connexion">
         </form>
-    </section> -->
+    </section>
 
 
     <!-- BANDEAU SUPERIEUR DU SITE -->

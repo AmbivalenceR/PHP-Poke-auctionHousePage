@@ -5,6 +5,8 @@
  */
 function  affichage_form_inscription(string $category_type)
 { ?>
+
+
     <h2>
         <?php
         switch ($category_type) {

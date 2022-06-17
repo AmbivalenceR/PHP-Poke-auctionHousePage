@@ -1,4 +1,5 @@
 <?php
+
 include __DIR__ . "/../classes/annonce.classe.php";
 
 use Annonce\Annonce;
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rareteCarte = $_POST["rareteCarte"];
     $numeroSerieCarte = $_POST["numeroSerieCarte"];
     $descriptionPokemon = $_POST["descriptionPokemon"];
-    $id_utilisateur = 1;
+    $id_utilisateur = $_SESSION["id"];
 
 
 

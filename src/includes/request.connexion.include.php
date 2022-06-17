@@ -12,13 +12,14 @@ require __DIR__ . "/db.php";
 
 
 /* Vérification du verbe HTTP */
-if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    http_response_code(405); // Code HTTP verbe HTTP non autorisé
-    die();
-}
+// if ($_SERVER["REQUEST_METHOD"] != "POST") {
+//     http_response_code(405); // Code HTTP verbe HTTP non autorisé
+//     die();
+// }
 
 /* Récupération des valeurs  */
-$category_type = $_POST["category_type"]; // Type d'utilisateur
+$category_type = $_POST["category_type"];
+// Type d'utilisateur
 
 if ($category_type == "Inscription") {
     $prenom = htmlspecialchars($_POST["prenom"]);

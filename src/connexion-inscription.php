@@ -1,6 +1,5 @@
 <?php
 require __DIR__ . "/includes/inscription_form.php";
-
 include __DIR__ . "/includes/bandeau.includes.php";
 
 
