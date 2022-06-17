@@ -25,12 +25,14 @@ class Enchere
 
     // Enregistrement de l'objet utilisateur dans la base de données
 
-    public function requeteEnchere()
-    {
-        global $dbh;
-        $query = $dbh->prepare("INSERT INTO encheres (`prix_offert`,`id`, `idAnonnce`) VALUES (?,?,?);");
-        return $query->execute([$this->prix_offert, $this->id,  $this->idAnonnce]);
-    }
+    // public function requeteEnchere()
+    // {
+    //     global $dbh;
+    //     $query = $dbh->prepare("INSERT INTO encheres (`prix_offert`,`id`, `idAnonnce`) VALUES (?,?,?);");
+    //     return $query->execute([$this->prix_offert, $this->id,  $this->idAnonnce]);
+    //     // return $query->fetchAll(PDO::FETCH_ASSOC);
+
+    // }
 
 
 

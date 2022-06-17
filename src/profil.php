@@ -1,12 +1,10 @@
 <?php
 
 include __DIR__ . "/includes/bandeau.includes.php";
-include __DIR__ . "/includes/request.connexion.php";
+include __DIR__ . "/includes/request.connexion.include.php";
 include __DIR__ . "/includes/profil.annonce.include.php";
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
