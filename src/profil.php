@@ -23,9 +23,13 @@ include __DIR__ . "/includes/profil.annonce.include.php";
 
 <body>
     <header>
+
         <?php afficherBandeau(); ?>
     </header>
     <main>
+
+        <h2> Bienvenue <?= $_SESSION["prenom"] ?>. Votre identifiant est <?= $_SESSION["id"] ?> .</h2>
+
         <?php if (isset($annoncesId)) {
             foreach ($annoncesId as $index => $annonce) { ?>
 

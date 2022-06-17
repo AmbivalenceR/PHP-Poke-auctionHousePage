@@ -14,11 +14,12 @@ include __DIR__ . "/includes/request.enchere.include.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PHP</title>
+    <title>PHP : Poké'auction House Page</title>
 </head>
 
 <body>
     <header>
+
         <?php afficherBandeau();
 
         ?>

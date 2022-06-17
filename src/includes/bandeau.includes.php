@@ -12,7 +12,7 @@ function afficherBandeau()
 
 ?>
 
-    <!--     <nav>
+    <nav>
         <a href="accueil.php">Accueil</a>
         <a href="creation-annonce.php">Création annonce</a>
         <a href="annonce-unique.php">Annonce unique</a>
@@ -22,7 +22,7 @@ function afficherBandeau()
         <form action="connexion-inscription.php" method="POST">
             <input type="submit" value="Connexion">
         </form>
-    </section> -->
+    </section>
 
 
     <!-- BANDEAU SUPERIEUR DU SITE -->
@@ -33,16 +33,13 @@ function afficherBandeau()
         </div>
         <div>
 
-            <button><a href=<?php if (!$_SESSION["id"]) echo 'connexion-inscription.php';
+            <button><a href=<?php if (!isset($_SESSION["id"])) echo 'connexion-inscription.php';
                             else  echo 'creation-annonce.php' ?>> Vendre </a></button>
-            <?php if (!$_SESSION["id"]) echo '<button><a href="connexion-inscription.php"> Connexion/Inscription </a></button>' ?>
-            <?php if ($_SESSION["id"]) echo '<button><a href="profil.php"> Mon profil </a></button>' ?>
-            <?php if ($_SESSION["id"]) echo '<button><a href=""> Mon historique </a></button>' ?>
-            <?php if ($_SESSION["id"]) echo '
-            <form action="accueil.php" method="POST">
-                  <button name="deconnexion" value="true"> Déconnexion </button>
-            </form>
-            ' ?>
+            <?php if (!isset($_SESSION["id"])) echo '<button><a href="connexion-inscription.php"> Connexion/Inscription </a></button>' ?>
+            <?php if (isset($_SESSION["id"])) echo '<button><a href="profil.php"> Mon profil </a></button>' ?>
+            <?php if (isset($_SESSION["id"])) echo '<button><a href=""> Mon historique </a></button>' ?>
+            <?php if (isset($_SESSION["id"])) echo '<button><a href="deconnexion.php"> Déconnexion </a></button>' ?>
+
 
 
         </div>
