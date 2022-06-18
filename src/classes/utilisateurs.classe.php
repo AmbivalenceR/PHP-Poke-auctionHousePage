@@ -54,6 +54,23 @@ class Utilisateurs
         }
     }
 
+    // Modification de l'objet utilisateur dans la base de données
+
+    public function modifierUtilisateur()
+    {
+        global $dbh;
+        $query = $dbh->prepare("UPDATE utilisateurs SET (nom, prenom, email, mdp, age) VALUES (?, ?, ?, ?, ?) WHERE id=?;");
+        $result = $query->execute([$this->nom, $this->prenom, $this->email, $this->mdp, $this->age, $_SESSION["id_utilisateur"]]);
+
+        if ($result) {
+            echo "Profil de FDP mis à jour. Le nouveau prénom est " . $this->prenom;
+        } else {
+            echo "Echec de la modification du profil.";
+        }
+    }
+
+
+
     // Methode pour affichage de l'utilisateur
     public function afficherUtilisateur(): void
     {
