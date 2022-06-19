@@ -1,4 +1,5 @@
 <?php
+
 // Include du fichier PHP du bandeau de navigation
 include __DIR__ . "/includes/bandeau.includes.php";
 include __DIR__ . "/includes/request.connexion.include.php";
