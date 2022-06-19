@@ -40,23 +40,54 @@ include __DIR__ . "/includes/request.enchere.include.php";
         <?php }
         }
         ?>
-        <?php if (isset($enchererino)) {
-            foreach (array_reverse($enchererino) as $index => $enchere) { ?>
-
-                <p> Prix offert : <?= $enchere["prix_offert"] ?> €</p>
-                <p> De <?= $enchere["id_utilisateur"] ?>. </p>
-        <?php }
-        }
-        ?>
 
 
         <form action="annonce-unique.php" method="post">
             <div>
                 <label>prix offert :</label>
-                <input class="" type="text" name="prix_offert" placeholder="€" />
+                <input class="" type="number" name="prix_offert" placeholder="€" />
             </div>
         </form>
 
+
+
+        <!-- Insert du prix de l'enchere -->
+        <?php if ($annonce["prix_actuel"] < $_POST["prix_offert"]) {
+            $query = $dbh->prepare("INSERT INTO encheres (`prix_offert`,`id_utilisateur`, `id_annonce`) VALUES (?,?,?);");
+
+            //Exécution de la requête
+            $result = $query->execute([$prix_offert, $id_utilisateur, $id_annonce]);
+            $enchere = $query->fetchAll(PDO::FETCH_ASSOC);
+        } ?>
+
+
+
+
+        <!-- Affichage de l'enchere sur l'annonce -->
+        <?php if ($annonce["prix_actuel"] < $_POST["prix_offert"]) {
+            foreach ($affichageEnchere as $index => $enchere) { ?>
+
+                <p> Prix offert : <?= $enchere["prix_offert"] ?> €</p>
+                <p> De <?= $enchere["id_utilisateur"] ?></p>
+            <?php }
+        } else if ($annonce["prix_actuel"] > $_POST["prix_offert"]) {
+            echo "Votre enchère doit etre supérieur au prix actuel";
+            ?> <?php
+            } else { ?>
+            <p>Saississez un montant supérieur à <?= $annonce["prix_actuel"] ?> </p>
+        <?php } ?>
+
+
+
+        <!-- Update de l'enchere dans la bdd annonce -->
+        <?php if ($annonce["prix_actuel"] < $_POST["prix_offert"]) {
+            $query = $dbh->prepare("UPDATE annonces SET`prix_actuel`= ? WHERE id=?;");
+
+            //Exécution de la requête
+            $result = $query->execute([$prix_offert, $id_annonce]);
+            $nouveauprix = $query->fetchAll(PDO::FETCH_ASSOC);
+        }
+        ?>
     </main>
 </body>
 

@@ -26,7 +26,7 @@ session_destroy();
 
             <h3>Revenez vite chez les FDP* !</h3>
 
-            <p>FDP : la communauté des Fans De Pokémon ;)</p>
+            <p>FDP : la communauté des Fans De Pokémon </p>
 
             <button>
                 <a href="accueil.php">Retour à l'accueil de PHP</a>
