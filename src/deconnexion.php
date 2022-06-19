@@ -3,6 +3,8 @@
 
 session_start();
 session_destroy();
+include_once __DIR__ . "/includes/request.modif-suppr-profil.include.php";
+
 
 ?>
 
@@ -20,11 +22,10 @@ session_destroy();
 <body>
     <section>
         <div>
-            <h2>BLC !</h2>
-            <h2>Bravo Les Copains !</h2>
+            <h2> BLC : Bravo Les Copains !</h2>
             <h2>Vous vous êtes bien déconnecté...</h2>
 
-            <h3>Revenez vite chez les FDP* !</h3>
+            <h3>Revenez vite chez les Fans De Pokémons !</h3>
 
             <p>FDP : la communauté des Fans De Pokémon </p>
 

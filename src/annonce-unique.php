@@ -41,6 +41,7 @@ include __DIR__ . "/includes/request.enchere.include.php";
         }
         ?>
 
+        <?php if (date("Y-m-d H:i:s") <= $annonce["date_de_fin"]) { ?>
 
         <form action="annonce-unique.php" method="post">
             <div>

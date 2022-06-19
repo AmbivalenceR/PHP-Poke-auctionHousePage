@@ -3,6 +3,15 @@
 include __DIR__ . "/includes/bandeau.includes.php";
 include __DIR__ . "/includes/request.connexion.include.php";
 include __DIR__ . "/includes/profil.annonce.include.php";
+include_once __DIR__ . "/includes/modif_form.include.php";
+include_once __DIR__ . "/includes/request.modif-suppr-profil.include.php";
+
+// Traitement de la requête en GET pour la modification / suppresion du profil
+
+$modifier_supprimer = null;
+if (isset($_GET["modifier_supprimer"])) {
+    $modifier_supprimer = $_GET["modifier_supprimer"];
+}
 
 ?>
 
@@ -27,6 +36,17 @@ include __DIR__ . "/includes/profil.annonce.include.php";
     <main>
         <?php if (isset($_SESSION["id_utilisateur"])) { ?>
             <h2> Bienvenue <?= $_SESSION["prenom"] ?>. Votre identifiant est <?= $_SESSION["id_utilisateur"] ?> .</h2>
+
+            <!-- Formulaire de choix "Modification" / "Suppression" du profil -->
+            <form action="profil.php" method="GET">
+                <button name="modifier_supprimer" value="Modifier">Modifier mon profil</button>
+                <button name="modifier_supprimer" value="Supprimer">Supprimer mon profil</button>
+            </form>
+
+            <!-- Formulaire de "Modification" / "Suppression" -->
+            <?php if ($modifier_supprimer != null) {
+                afficherModifForm($modifier_supprimer);
+            } ?>
 
             <?php if (isset($annoncesId)) {
                 foreach ($annoncesId as $index => $annonce) { ?>

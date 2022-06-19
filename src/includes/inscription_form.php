@@ -21,6 +21,8 @@ function  affichage_form_inscription(string $category_type)
         }
         ?>
     </h2>
+
+    <!-- ********************************** FORMULAIRE D'INSCRIPTION, ENVOIE VERS profil.php **************************************** -->
     <form action="profil.php" method="post">
 
         <?php if ($category_type == "Inscription") { ?>

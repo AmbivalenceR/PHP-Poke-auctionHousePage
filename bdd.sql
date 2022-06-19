@@ -31,6 +31,6 @@ CREATE TABLE `encheres` (
    `id_utilisateur` int(11) NOT NULL,
    `id_annonce` int(11) NOT NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id),
-    FOREIGN KEY (id_annonce) REFERENCES annonces(id),
+    FOREIGN KEY (id_annonce) REFERENCES annonces(id)
   
 )
