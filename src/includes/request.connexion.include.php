@@ -1,20 +1,23 @@
 <?php
-/* Imports */
-
+// Accès au namespace "Utilisateurs"
 use Utilisateurs\Utilisateurs;
 
-require __DIR__ . "/inscription_form.php";
-include __DIR__ . "/../classes/utilisateurs.classe.php";
-require __DIR__ . "/db.php";
+// Require du formulaire d'inscription / connexion
+require_once __DIR__ . "/inscription_form.php";
 
-// function connexionOuInscription()
-// {
-// };
+// Require de la classe "Utilisateurs"
+require_once __DIR__ . "/../classes/utilisateurs.classe.php";
+
+// Require du new PDO
+require_once __DIR__ . "/db.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    /* Récupération des valeurs  */
+
+    // Récupération de la valeur "connexion" ou "inscription"
     $category_type = $_POST["category_type"];
-    // Type d'utilisateur
+
+    // Si "inscription"
 
     if ($category_type == "Inscription") {
         $prenom = htmlspecialchars($_POST["prenom"]);
@@ -24,15 +27,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $age = htmlspecialchars($_POST["age"]);
         $passePourConnexion = $_POST["mdp"];
 
-
-        /* Création de l'utilisateur */
+        // Création de l'utilisateur 
         $utilisateur = new Utilisateurs($prenom, $nom, $email, $mdp, $age);
         $result = $utilisateur->inscriptionUtilisateur();
-        /* Connexion de l'utilisateur à la suite de son inscription */
+
+        // Connexion de l'utilisateur à la suite de son inscription 
         Utilisateurs::connecterUtilisateur($email, $passePourConnexion);
-    } else if ($category_type == "Connexion") {
+    }
+
+    // Si "connexion"
+
+    else if ($category_type == "Connexion") {
         $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
         $mdp = $_POST["mdp"];
+
         /* Connexion de l'utilisateur */
         $utilisateur = Utilisateurs::connecterUtilisateur($email, $mdp);
     }

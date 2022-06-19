@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 session_destroy();
 
@@ -12,9 +10,12 @@ session_destroy();
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Déconnexion</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -28,7 +29,7 @@ session_destroy();
 
             <p>FDP : la communauté des Fans De Pokémon ;)</p>
 
-            <button>
+            <button class="bouton">
                 <a href="accueil.php">Retour à l'accueil de PHP</a>
             </button>
 

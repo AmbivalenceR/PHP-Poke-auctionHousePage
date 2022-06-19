@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 require_once __DIR__ . "/db.php";
 
 /* Préparation de la requête */
-$query = $dbh->prepare("SELECT * FROM annonces WHERE id = ?;");
+$query = $dbh->prepare("SELECT * FROM annonces WHERE id_annonce = ?;");
 
 /* Exécution de la requête */
 $query->execute([$_SESSION["id_annonce"]]);

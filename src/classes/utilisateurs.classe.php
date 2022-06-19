@@ -28,7 +28,7 @@ class Utilisateurs
     public function inscriptionUtilisateur()
     {
         global $dbh;
-        $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mdp, age) VALUES (?, ?, ?, ?, ?);");
+        $query = $dbh->prepare("INSERT INTO utilisateurs (nom_utilisateur, prenom_utilisateur, email, mdp, age) VALUES (?, ?, ?, ?, ?);");
         $query->execute([$this->nom, $this->prenom, $this->email, $this->mdp, $this->age]);
     }
 
@@ -43,10 +43,10 @@ class Utilisateurs
         $donneesUtilisateur = $query->fetch(\PDO::FETCH_ASSOC);
 
         if ($donneesUtilisateur != false && password_verify($mdp, $donneesUtilisateur["mdp"])) {
-            $utilisateur = new Utilisateurs($donneesUtilisateur["nom"], $donneesUtilisateur["prenom"], $donneesUtilisateur["email"], $donneesUtilisateur["mdp"], $donneesUtilisateur["age"]);
+            $utilisateur = new Utilisateurs($donneesUtilisateur["nom_utilisateur"], $donneesUtilisateur["prenom_utilisateur"], $donneesUtilisateur["email"], $donneesUtilisateur["mdp"], $donneesUtilisateur["age"]);
             // mise en mémoire des informations de l'utilisateur pour la session
-            $_SESSION["id_utilisateur"] = $donneesUtilisateur["id"];
-            $_SESSION["prenom"] = $donneesUtilisateur["prenom"];
+            $_SESSION["id_utilisateur"] = $donneesUtilisateur["id_utilisateur"];
+            $_SESSION["prenom"] = $donneesUtilisateur["prenom_utilisateur"];
             return true;
         } else {
             echo "Echec de connexion : email ou mot de passe incorrect.";

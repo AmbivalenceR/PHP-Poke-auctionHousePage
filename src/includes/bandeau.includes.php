@@ -14,18 +14,18 @@ function afficherBandeau()
 ?>
     <!-- BANDEAU SUPERIEUR DU SITE -->
 
-    <nav id="bandeauSup">
-        <div id="logoBandeau">
-            <button><a href="accueil.php"> Accueil </a></button>
-        </div>
-        <div id="bandeauPartieDroite">
+    <nav>
+        <a href="accueil.php" class="logo">
+            <img src="/img/phpokeLogo.png" alt="logo de Poke auction House Page">
+        </a>
 
-            <button><a href=<?php if (!isset($_SESSION["id_utilisateur"])) echo 'connexion-inscription.php';
-                            else  echo 'creation-annonce.php' ?>> Vendre </a></button>
-            <?php if (!isset($_SESSION["id_utilisateur"])) echo '<button><a href="connexion-inscription.php"> Connexion/Inscription </a></button>' ?>
-            <?php if (isset($_SESSION["id_utilisateur"])) echo '<button><a href="profil.php"> Mon profil </a></button>' ?>
-            <?php if (isset($_SESSION["id_utilisateur"])) echo '<button><a href=""> Mon historique </a></button>' ?>
-            <?php if (isset($_SESSION["id_utilisateur"])) echo '<button><a href="deconnexion.php"> Déconnexion </a></button>' ?>
+        <div>
+
+            <button class="bouton"><a href=<?php if (!isset($_SESSION["id_utilisateur"])) echo 'connexion-inscription.php';
+                                            else  echo 'creation-annonce.php' ?>> Vendre </a></button>
+            <?php if (!isset($_SESSION["id_utilisateur"])) echo '<button class="bouton"><a href="connexion-inscription.php"> Connexion/Inscription </a></button>' ?>
+            <?php if (isset($_SESSION["id_utilisateur"])) echo '<button class="bouton"><a href="profil.php"> Mon profil </a></button>' ?>
+            <?php if (isset($_SESSION["id_utilisateur"])) echo '<button class="bouton"><a href="deconnexion.php"> Déconnexion </a></button>' ?>
 
         </div>
     </nav>

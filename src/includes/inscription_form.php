@@ -8,65 +8,54 @@ function  affichage_form_inscription(string $category_type)
 
 
     <h2>
-        <?php
-        switch ($category_type) {
-            case "Inscription":
-                echo "Inscription";
-                break;
-            case "Connexion":
-                echo "Connexion";
-                break;
-            default:
-                echo "Veulliez sélectionner une catégorie";
-        }
-        ?>
+
     </h2>
-    <form action="profil.php" method="post">
+    <form class="formInscription" action="profil.php" method="post">
 
         <?php if ($category_type == "Inscription") { ?>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Prénom :</label>
                 <input class="" type="text" name="prenom" placeholder="Prenom" />
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Nom :</label>
                 <input class="" type="text" name="nom" placeholder="nom" />
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Email :</label>
                 <input type="email" name="email" placeholder="email">
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Mot de passe:</label>
                 <input type="password" name="mdp" placeholder="mdp">
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Age:</label>
                 <input type="text" name="age" placeholder="age">
             </div>
 
-            <input type="submit" value="S'inscrire" />
+            <input class="bouton" type="submit" value="S'inscrire" />
 
         <?php } ?>
 
         <?php if ($category_type == "Connexion") { ?>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Email :</label>
                 <input type="email" name="email" placeholder="email">
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Mot de passe:</label>
                 <input type="password" name="mdp" placeholder="mdp">
             </div>
 
-            <input type="submit" value="Se connecter" />
+            <input class="bouton" type="submit" value="Se connecter" />
 
         <?php } ?>
 

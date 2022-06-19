@@ -12,6 +12,13 @@ include __DIR__ . "/includes/request.enchere.include.php";
 <head>
     <meta charset="UTF-8">
     <title>PHP</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 
 <body>
@@ -19,23 +26,50 @@ include __DIR__ . "/includes/request.enchere.include.php";
         <?php afficherBandeau(); ?>
     </header>
     <main>
+        <h1>Qui sera le prochain dresseur ?</h1>
         <?php if (isset($annonceSelectionne)) {
             foreach ($annonceSelectionne as $index => $annonce) { ?>
+                <article id="annonce" class="annonceUnique">
+                    <div class="image imageAnnonceUnique">
+                        <img src=" /img/cartePoke.jpeg" alt="carte pokemon" style="width: 90%; margin: 0 auto;">
+                    </div>
+                    <div style="width: 73%; padding: 2% 0% 0% 4%;">
+                        <h2><?= $annonce["nom_pokemon"] ?></h2>
+                        <div style="display: flex;">
+                            <div class="aPropos aProposAnnonceUnique">
+                                <p> Type : <?= $annonce["type"] ?> </p>
+                                <p> PV : <?= $annonce["pv"] ?> </p>
+                                <p> Description du Pokemon : <?= $annonce["description"] ?></p>
+                                <br>
+                                <p> Rareté de la carte : <?= $annonce["rarete"] ?></p>
+                                <p> Numero de série de la carte : <?= $annonce["n_serie"] ?></p>
+                                <p> État de la carte : <?= $annonce["condition"] ?></p>
+                            </div>
+                            <div class="aPropos" style="width: 50%; padding-top: 4%;">
+                                <p> Date : <?= $annonce["date_annonce"] ?></p>
+                                <p> Date de fin des enchères : <?= $annonce["date_de_fin"] ?></p>
+                                <p> ID annonce : <?= $annonce["id_annonce"] ?></p>
+                                <p> ID utilisateur : <?= $annonce["id_utilisateur"] ?></p>
+                                <br>
+                                <p> Prix de départ de enchères : <?= $annonce["prix_depart"] ?></p>
+                                <p> Prix actuel : <?= $annonce["prix_actuel"] ?></p>
+                                <p> Dernière enchère : X</p>
+                            </div>
+                        </div>
 
-                <h2 class="nomPokemon"><?= $annonce["nom"] ?></h2>
-                <p> Type : <?= $annonce["type"] ?> </p>
-                <p> PV : <?= $annonce["pv"] ?> </p>
-                <p> Description du Pokemon : <?= $annonce["description"] ?></p>
-                <p> Rareté de la carte : <?= $annonce["rarete"] ?></p>
-                <p> Numero de série de la carte : <?= $annonce["n_serie"] ?></p>
-                <p> État de la carte : <?= $annonce["condition"] ?></p>
-                <p> Prix de départ de enchères : <?= $annonce["prix_depart"] ?></p>
-                <p> Prix actuel : <?= $annonce["prix_actuel"] ?></p>
-                <p> Date : <?= $annonce["date_annonce"] ?></p>
-                <p> Date de fin des enchères : <?= $annonce["date_de_fin"] ?></p>
-                <p> Dernière enchère : X</p>
-                <p> ID annonce : <?= $annonce["id"] ?></p>
-                <p> ID utilisateur : <?= $annonce["id_utilisateur"] ?></p>
+                    </div>
+                    <?php if (date("Y-m-d H:i:s") <= $annonce["date_de_fin"]) { ?>
+
+                        <form id="formEnchere" action="annonce-unique.php" method="post">
+                            <input type="text" name="prix_offert" placeholder="€" />
+                            <input class="bouton" type="submit" value="Enchérir !">
+                        </form>
+
+                    <?php } else { ?>
+                        <p>Enchère terminée</p>
+                    <?php } ?>
+                </article>
+
 
         <?php }
         }
@@ -49,18 +83,7 @@ include __DIR__ . "/includes/request.enchere.include.php";
         }
         ?>
 
-        <?php if (date("Y-m-d H:i:s") <= $annonce["date_de_fin"]) { ?>
 
-            <form action="annonce-unique.php" method="post">
-                <div>
-                    <label>prix offert :</label>
-                    <input class="" type="text" name="prix_offert" placeholder="€" />
-                </div>
-            </form>
-
-        <?php } else { ?>
-            <p>Enchère terminée</p>
-        <?php } ?>
     </main>
 </body>
 

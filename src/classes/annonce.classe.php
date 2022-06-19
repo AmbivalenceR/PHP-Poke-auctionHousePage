@@ -43,21 +43,36 @@ class Annonce
     {
 
 ?>
-        <div class="divAnnonce">
-            <h2 class="nomPokemon"><?= $this->nomPokemon ?></h2>
-            <p> Type : <?= $this->typePokemon ?> </p>
-            <p> PV : <?= $this->pvPokemon ?> </p>
-            <p> Description du Pokemon : <?= $this->descriptionPokemon ?></p>
-            <p> Rareté de la carte : <?= $this->rareteCarte ?></p>
-            <p> Numero de série de la carte : <?= $this->numeroSerieCarte ?></p>
-            <p> État de la carte : <?= $this->conditionCarte ?></p>
-            <p> Prix de départ de enchères : <?= $this->prixDepart ?></p>
-            <p> Date : <?= $this->date ?></p>
-            <p> Date de fin des enchères : <?= $this->dateFinEncheres ?></p>
-            <p> Dernière enchère : X</p>
-            <p> ID annonce : <?= $this->id ?></p>
-            <p> ID utilisateur : <?= $this->id_utilisateur ?></p>
-        </div>
+        <article id="annonce" class="annonceUnique">
+            <div class="image imageAnnonceUnique">
+                <img src=" /img/cartePoke.jpeg" alt="carte pokemon" style="width: 90%; margin: 0 auto;">
+            </div>
+            <div style="width: 73%; padding: 2% 0% 0% 4%;">
+                <h2><?= $this->nomPokemon ?></h2>
+                <div style="display: flex;">
+                    <div class="aPropos aProposAnnonceUnique">
+                        <p> Type : <?= $this->typePokemon ?> </p>
+                        <p> PV : <?= $this->pvPokemon ?> </p>
+                        <p> Description du Pokemon : <?= $this->descriptionPokemon ?></p>
+                        <br>
+                        <p> Rareté de la carte : <?= $this->rareteCarte  ?></p>
+                        <p> Numero de série de la carte : <?= $this->numeroSerieCarte ?></p>
+                        <p> État de la carte : <?= $this->conditionCarte ?></p>
+                    </div>
+                    <div class="aPropos" style="width: 50%; padding-top: 4%;">
+                        <p> Date : <?= $this->date ?></p>
+                        <p> Date de fin des enchères : <?= $this->dateFinEncheres ?></p>
+                        <p> ID utilisateur : <?= $this->id_utilisateur ?></p>
+                        <br>
+                        <p> Prix de départ de enchères : <?= $this->prixDepart ?></p>
+                        <p> Prix actuel : <?= $this->prixDepart ?></p>
+                        <p> Dernière enchère : X</p>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+
 <?php
 
     }
