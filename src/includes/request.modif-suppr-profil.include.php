@@ -3,15 +3,13 @@
 
 use Utilisateurs\Utilisateurs;
 
-require __DIR__ . "/modif_form.include.php.php";
-include __DIR__ . "/../classes/utilisateurs.classe.php";
-require __DIR__ . "/db.php";
+require_once __DIR__ . "/modif_form.include.php";
+include_once __DIR__ . "/../classes/utilisateurs.classe.php";
+require_once __DIR__ . "/db.php";
 
-// function connexionOuInscription()
-// {
-// };
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo "Test de la REQUEST_METHOD == POST passé avec succès pour Modification / Suppression";
     /* Récupération des valeurs  */
     $modifier_supprimer = $_POST["modifier_supprimer"];
     $validerSuppression = $_POST["validerSuppression"];
@@ -38,6 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          * Suppression du profil
          */
     } else if ($modifier_supprimer == "Supprimer" && $validerSuppression == "oui") {
+
+        echo "Entrée dans Fonction de SUPPRESSION de l'utilisateur";
         /* Récupération de l'id */
         $id_utilisateur = filter_var($_SESSION["id_utilisateur"], FILTER_SANITIZE_NUMBER_INT);
 
@@ -48,7 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $suppressionReussie = $query->execute([$id_utilisateur]);
     }
 
-    if ($suppressionReussie == 1) { ?>
+    if ($suppressionReussie == 1) {
+        
+        ?>
         <p>Contact supprimé</p>
     <?php } else { ?>
         <p>Une erreur s'est produite, veuillez réessayer.</p>

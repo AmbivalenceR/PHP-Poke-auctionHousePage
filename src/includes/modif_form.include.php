@@ -17,14 +17,14 @@ function afficherModifForm(string $modifier_supprimer)
                 echo "Supprimer";
                 break;
             default:
-                echo "Souhaitez vous modifier ou supprimer votre profil de FDP ?";
+                echo "Souhaitez-vous modifier ou supprimer votre profil de FDP ?";
         }
         ?>
     </h2>
     <!-- Formulaire de modification, récupéré de celui de création -->
-    <form action="profil.php" method="POST">
-
-        <?php if ($modifier_supprimer == "Modifier") { ?>
+    <?php if ($modifier_supprimer == "Modifier") { ?>
+        <form action="profil.php" method="POST">
+            <?php echo $_SESSION["id_utilisateur"]; ?>
 
             <div>
                 <label>Prénom :</label>
@@ -33,7 +33,7 @@ function afficherModifForm(string $modifier_supprimer)
 
             <div>
                 <label>Nom :</label>
-                <input class="" type="text" name="nom" placeholder="nom" />
+                <input class="" type="text" name="nom" placeholder="Nom" />
             </div>
 
             <div>
@@ -53,23 +53,33 @@ function afficherModifForm(string $modifier_supprimer)
 
             <input type="submit" value="Modifier" />
 
+            <input type="hidden" name="modifier_supprimer" value="<?= $modifier_supprimer ?>" />
+
+
         <?php } ?>
 
         <!-- Demande de validation de suppression du profil -->
         <?php if ($modifier_supprimer == "Supprimer") { ?>
+            <h3>Souhaitez-vous réellement supprimer votre profil de Fan De Pokémon sur PHP ?</h3>
 
-            <div>
-                <label>Souhaitez-vous réellement supprimer votre profil de FDP sur PHP ?</label>
-                <select name="validerSuppression" id="validerSuppression">
-                    <option value="non">NON, je suis un vrai Fan De Pokémon.</option>
-                    <option value="oui">OUI, je suis Fan d'autre chose maintenant.</option>
-                </select>
-                <input type="submit" value="Supprimer">
+            <!--  Redirection vers la page profil.php si l'utilisateur ne confirme pas. -->
+            <form action="deconnexion.php" method="POST">
+
+                <div>
+                    <label>Souhaitez-vous réellement supprimer votre profil de Fan De Pokémon sur PHP ?</label>
+                    <select name="validerSuppression" id="validerSuppression">
+                        <option value="non">NON, je suis un vrai Fan De Pokémon !</option>
+                        <option value="oui">OUI, je suis Fan d'autre chose maintenant... désolé.</option>
+                    </select>
+                    <input type="submit" value="Supprimer">
+                </div>
+
+
 
             <?php } ?>
 
             <input type="hidden" name="modifier_supprimer" value="<?= $modifier_supprimer ?>" />
+            </form>
 
 
-    </form>
-<?php }
+        <?php }

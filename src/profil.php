@@ -4,6 +4,7 @@ include __DIR__ . "/includes/bandeau.includes.php";
 include __DIR__ . "/includes/request.connexion.include.php";
 include __DIR__ . "/includes/profil.annonce.include.php";
 include_once __DIR__ . "/includes/modif_form.include.php";
+include_once __DIR__ . "/includes/request.modif-suppr-profil.include.php";
 
 // Traitement de la requête en GET pour la modification / suppresion du profil
 
