@@ -7,7 +7,6 @@ require __DIR__ . "/includes/inscription_form.php";
 /* Traitement de la requête */
 
 
-
 $category_type = null;
 if (isset($_GET["category_type"])) {
     $category_type = $_GET["category_type"];

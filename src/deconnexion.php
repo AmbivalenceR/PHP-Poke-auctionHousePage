@@ -1,6 +1,9 @@
 <?php
-session_start();
+// Include du fichier PHP du bandeau de navigation
+include __DIR__ . "/includes/bandeau.includes.php";
 session_destroy();
+include_once __DIR__ . "/includes/request.modif-suppr-profil.include.php";
+
 
 ?>
 
@@ -16,27 +19,28 @@ session_destroy();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 
 <body>
-    <section>
-        <div>
-            <h2>BLC !</h2>
-            <h2>Bravo Les Copains !</h2>
-            <h2>Vous vous êtes bien déconnecté...</h2>
+    <header>
+        <!-- Affichage de la navigation -->
 
-            <h3>Revenez vite chez les FDP* !</h3>
+        <?php afficherBandeau(); ?>
+    </header>
+    <main>
+        <h1> Vous avez été déconnecté.</h1>
 
-            <p>FDP : la communauté des Fans De Pokémon ;)</p>
-
-            <button class="bouton">
-                <a href="accueil.php">Retour à l'accueil de PHP</a>
-            </button>
+        <button class="bouton" style="display: block; margin: 0 auto;">
+            <a href="accueil.php">Retour à l'accueil de PHP</a>
+        </button>
 
 
-        </div>
-    </section>
+    </main>
+    <footer>
 
+    </footer>
 </body>
 
 </html>

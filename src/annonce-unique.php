@@ -74,16 +74,51 @@ include __DIR__ . "/includes/request.enchere.include.php";
         <?php }
         }
         ?>
-        <?php if (isset($enchererino)) {
-            foreach (array_reverse($enchererino) as $index => $enchere) { ?>
+
+        <!-- Insert du prix de l'enchere -->
+        <?php if (isset($_POST["prix_offert"]) && $annonce["prix_actuel"] < $_POST["prix_offert"]) {
+            $query = $dbh->prepare("INSERT INTO encheres (`prix_offert`,`id_utilisateur`, `id_annonce`) VALUES (?,?,?);");
+
+            //Exécution de la requête
+            $result = $query->execute([$prix_offert, $id_utilisateur, $id_annonce]);
+            $enchere = $query->fetchAll(PDO::FETCH_ASSOC);
+        } ?>
+
+
+
+
+        <!-- Affichage de l'enchere sur l'annonce -->
+        <?php if (isset($_POST["prix_offert"]) && $annonce["prix_actuel"] < $_POST["prix_offert"]) {
+
+            foreach ($affichageEnchere as $index => $enchere) { ?>
 
                 <p> Prix offert : <?= $enchere["prix_offert"] ?> €</p>
-                <p> De <?= $enchere["id_utilisateur"] ?>. </p>
-        <?php }
+                <p> De <?= $enchere["id_utilisateur"] ?></p>
+            <?php }
+        } else if (isset($_POST["prix_offert"]) && $annonce["prix_actuel"] > $_POST["prix_offert"]) {
+            echo "Votre enchère doit etre supérieur au prix actuel";
+            ?> <?php
+            } else { ?>
+            <p>Saississez un montant supérieur à <?= $annonce["prix_actuel"] ?> </p>
+        <?php } ?>
+
+
+
+        <!-- Update de l'enchere dans la bdd annonce -->
+        <?php if (isset($_POST["prix_offert"]) && $annonce["prix_actuel"] < $_POST["prix_offert"]) {
+            $query = $dbh->prepare("UPDATE annonces SET`prix_actuel`= ? WHERE id_annonce=?;");
+
+            //Exécution de la requête
+            $result = $query->execute([$prix_offert, $id_annonce]);
+
+
+            $query = $dbh->prepare("UPDATE annonces SET`id_encherisseur`= ? WHERE id_annonce=?;");
+
+            //Exécution de la requête
+            $result = $query->execute([$_SESSION["id_utilisateur"], $id_annonce]);
+            $nouveauEncherisseur = $query->fetchAll(PDO::FETCH_ASSOC);
         }
         ?>
-
-
     </main>
 </body>
 

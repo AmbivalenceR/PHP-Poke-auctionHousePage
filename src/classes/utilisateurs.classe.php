@@ -27,6 +27,8 @@ class Utilisateurs
 
     public function inscriptionUtilisateur()
     {
+        // echo "Entrée dans méthode de CREATION de l'utilisateur via l'instance utilisateur";
+
         global $dbh;
         $query = $dbh->prepare("INSERT INTO utilisateurs (nom_utilisateur, prenom_utilisateur, email, mdp, age) VALUES (?, ?, ?, ?, ?);");
         $query->execute([$this->nom, $this->prenom, $this->email, $this->mdp, $this->age]);
@@ -37,6 +39,8 @@ class Utilisateurs
 
     public static function connecterUtilisateur(string $email, string $mdp): bool
     {
+        // echo "Entrée dans méthode de CONNEXION de l'utilisateur via l'instance utilisateur";
+
         global $dbh;
         $query = $dbh->prepare("SELECT * FROM utilisateurs WHERE email = ?");
         $query->execute([$email]);
@@ -53,6 +57,25 @@ class Utilisateurs
             return false;
         }
     }
+
+    // Modification de l'objet utilisateur dans la base de données
+
+    public function modifierUtilisateur()
+    {
+        echo "Entrée dans méthode de MODIFICATION de l'utilisateur via l'instance utilisateur";
+
+        global $dbh;
+        $query = $dbh->prepare("UPDATE utilisateurs SET prenom=? , nom=? , email=? , mdp=? WHERE id=?;");
+        $result = $query->execute([$this->prenom, $this->nom, $this->email, $this->mdp, $_SESSION["id_utilisateur"]]);
+
+        if ($result) {
+            echo "Profil de Fan De Pokémon mis à jour. Le nouveau prénom est " . $this->prenom;
+        } else {
+            echo "Echec de la modification du profil de Fan De Pokémon.";
+        }
+    }
+
+
 
     // Methode pour affichage de l'utilisateur
     public function afficherUtilisateur(): void

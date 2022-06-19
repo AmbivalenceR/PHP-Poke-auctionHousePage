@@ -12,36 +12,46 @@ require_once __DIR__ . "/../classes/utilisateurs.classe.php";
 require_once __DIR__ . "/db.php";
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+if (isset($_POST["category_type"])) {
     // Récupération de la valeur "connexion" ou "inscription"
     $category_type = $_POST["category_type"];
 
-    // Si "inscription"
+    // echo "Valeur de category_type à l'entrée dans request_connexion : " . $category_type;
+    // echo "ICI category_type est SET";
 
-    if ($category_type == "Inscription") {
-        $prenom = htmlspecialchars($_POST["prenom"]);
-        $nom = htmlspecialchars($_POST["nom"]);
-        $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
-        $mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
-        $age = htmlspecialchars($_POST["age"]);
-        $passePourConnexion = $_POST["mdp"];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // echo "Entrée dans request_connexion";
 
-        // Création de l'utilisateur 
-        $utilisateur = new Utilisateurs($prenom, $nom, $email, $mdp, $age);
-        $result = $utilisateur->inscriptionUtilisateur();
+        // Si "inscription"
 
-        // Connexion de l'utilisateur à la suite de son inscription 
-        Utilisateurs::connecterUtilisateur($email, $passePourConnexion);
-    }
+        if ($category_type == "Inscription") {
+            $prenom = htmlspecialchars($_POST["prenom"]);
+            $nom = htmlspecialchars($_POST["nom"]);
+            $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
+            $mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
+            $age = htmlspecialchars($_POST["age"]);
+            $passePourConnexion = $_POST["mdp"];
 
-    // Si "connexion"
 
-    else if ($category_type == "Connexion") {
-        $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
-        $mdp = $_POST["mdp"];
+            /* Création de l'utilisateur */
+            $utilisateur = new Utilisateurs($prenom, $nom, $email, $mdp, $age);
+            $result = $utilisateur->inscriptionUtilisateur();
 
-        /* Connexion de l'utilisateur */
-        $utilisateur = Utilisateurs::connecterUtilisateur($email, $mdp);
+            /* Connexion de l'utilisateur à la suite de son inscription */
+            Utilisateurs::connecterUtilisateur($email, $passePourConnexion);
+        }
+
+        // Si "connexion"
+
+        else if ($category_type == "Connexion") {
+
+            $email = htmlspecialchars(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL));
+            $mdp = $_POST["mdp"];
+
+            /* Connexion de l'utilisateur */
+            $utilisateur = Utilisateurs::connecterUtilisateur($email, $mdp);
+        }
+    } else {
+        return "ERREUR : category_type non défini.";
     }
 }

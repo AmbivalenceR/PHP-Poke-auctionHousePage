@@ -1,6 +1,17 @@
 <?php
 // Include du fichier PHP du bandeau de navigation
 include __DIR__ . "/includes/bandeau.includes.php";
+include __DIR__ . "/includes/request.connexion.include.php";
+include __DIR__ . "/includes/profil.annonce.include.php";
+include_once __DIR__ . "/includes/modif_form.include.php";
+include_once __DIR__ . "/includes/request.modif-suppr-profil.include.php";
+
+// Traitement de la requête en GET pour la modification / suppresion du profil
+
+$modifier_supprimer = null;
+if (isset($_GET["modifier_supprimer"])) {
+    $modifier_supprimer = $_GET["modifier_supprimer"];
+}
 
 // Require du fichier PHP relatif au formulaire de connexion
 require_once __DIR__ . "/includes/request.connexion.include.php";
