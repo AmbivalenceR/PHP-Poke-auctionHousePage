@@ -35,14 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["modifier_supprimer"]) 
         /** --------------------------------------------------------------------------
          * Suppression du profil
          */
-    } else if (isset($modifier_supprimer) && $modifier_supprimer == "Supprimer" && $validerSuppression == "oui") {
+    } else if (isset($validerSuppression) && $validerSuppression == "oui") {
 
         echo "Entrée dans Fonction de SUPPRESSION de l'utilisateur";
         /* Récupération de l'id */
         $id_utilisateur = filter_var($_SESSION["id_utilisateur"], FILTER_SANITIZE_NUMBER_INT);
 
         /* Préparation de la requête */
-        $query = $dbh->prepare("DELETE FROM utilisateurs WHERE id = ?;");
+        $query = $dbh->prepare("DELETE FROM utilisateurs WHERE id_utilisateur = ?;");
 
         /* Exécution de la requête */
         $suppressionReussie = $query->execute([$id_utilisateur]);

@@ -5,6 +5,7 @@ include __DIR__ . "/includes/bandeau.includes.php";
 // Require du fichier PHP relatif aux annonces publiées
 require_once __DIR__ . "/includes/request.annonce.include.php";
 
+
 ?>
 
 
@@ -63,39 +64,9 @@ require_once __DIR__ . "/includes/request.annonce.include.php";
 
             <section>
                 <?php if (isset($annonces)) {
-                    foreach ($annonces as $index => $annonce) { ?>
-                        <article id="annonce">
-                            <div class="image">
-                                <img src=" /img/cartePoke.jpeg" alt="carte pokemon" style="width: 100%;">
-                            </div>
-                            <div style="width: 73%; padding: 2% 0% 0% 4%;">
-                                <h2><?= $annonce["nom_pokemon"] ?></h2>
-                                <div style="display: flex;">
-                                    <div class="aPropos">
-
-                                        <p> Type : <?= $annonce["type"] ?> </p>
-                                        <p> PV : <?= $annonce["pv"] ?> </p>
-                                    </div>
-                                    <div class="aPropos">
-                                        <p> Série n° : <?= $annonce["n_serie"] ?></p>
-                                        <p> Rareté : <?= $annonce["rarete"] ?></p>
-                                        <p> État : <?= $annonce["condition"] ?></p>
-                                    </div>
-                                    <div class="aPropos">
-                                        <p> Fin de l'enchère : <?= $annonce["date_de_fin"] ?></p>
-                                        <p> Vendu par : <?= $annonce["id_utilisateur"] ?></p>
-                                        <p> Dernière enchère : <?= $annonce["prix_actuel"] ?></p>
-                                        <p> Encherisseur : X</p>
-                                        <form action="annonce-unique.php" method="GET">
-                                            <button class="bouton" type="submit" name="annonce" value="<?= $annonce["id_annonce"]; ?>">Voir l'annonce</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </article>
-
-                <?php }
+                    foreach ($annonces as $index => $annonce) {
+                        afficherAnnonce($annonce);
+                    }
                 } ?>
             </section>
         <?php }
@@ -108,40 +79,10 @@ require_once __DIR__ . "/includes/request.annonce.include.php";
             <section>
                 <?php if (isset($annonces)) {
                     foreach ($annonces as $index => $annonce) {
-                        if (date("Y-m-d H:i:s") <= $annonce["date_de_fin"]) {  ?>
+                        if (date("Y-m-d H:i:s") <= $annonce["date_de_fin"]) {
 
-                            <article id="annonce">
-                                <div class="image">
-                                    <img src=" /img/cartePoke.jpeg" alt="carte pokemon" style="width: 100%;">
-                                </div>
-                                <div style="width: 73%; padding: 2% 0% 0% 2%;">
-                                    <h2><?= $annonce["nom_pokemon"] ?></h2>
-                                    <div style="display: flex;">
-                                        <div class="aPropos">
-
-                                            <p> Type : <?= $annonce["type"] ?> </p>
-                                            <p> PV : <?= $annonce["pv"] ?> </p>
-                                        </div>
-                                        <div class="aPropos">
-                                            <p> Série n° : <?= $annonce["n_serie"] ?></p>
-                                            <p> Rareté : <?= $annonce["rarete"] ?></p>
-                                            <p> État : <?= $annonce["condition"] ?></p>
-                                        </div>
-                                        <div class="aPropos">
-                                            <p> Fin de l'enchère : <?= $annonce["date_de_fin"] ?></p>
-                                            <p> Vendu par : <?= $annonce["id_utilisateur"] ?></p>
-                                            <p> Dernière enchère : <?= $annonce["prix_actuel"] ?></p>
-                                            <p> Encherisseur : X</p>
-                                            <form action="annonce-unique.php" method="GET">
-                                                <button class="bouton" type="submit" name="annonce" value="<?= $annonce["id_annonce"]; ?>">Voir l'annonce</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </article>
-
-                <?php }
+                            afficherAnnonce($annonce);
+                        }
                     }
                 } ?>
             </section>
@@ -155,40 +96,9 @@ require_once __DIR__ . "/includes/request.annonce.include.php";
             <section>
                 <?php if (isset($annonces)) {
                     foreach ($annonces as $index => $annonce) {
-                        if (date("Y-m-d H:i:s") >= $annonce["date_de_fin"]) {  ?>
-
-                            <article id="annonce">
-                                <div class="image">
-                                    <img src=" /img/cartePoke.jpeg" alt="carte pokemon" style="width: 100%;">
-                                </div>
-                                <div style="width: 73%; padding: 2% 0% 0% 2%;">
-                                    <h2><?= $annonce["nom_pokemon"] ?></h2>
-                                    <div style="display: flex;">
-                                        <div class="aPropos">
-
-                                            <p> Type : <?= $annonce["type"] ?> </p>
-                                            <p> PV : <?= $annonce["pv"] ?> </p>
-                                        </div>
-                                        <div class="aPropos">
-                                            <p> Série n° : <?= $annonce["n_serie"] ?></p>
-                                            <p> Rareté : <?= $annonce["rarete"] ?></p>
-                                            <p> État : <?= $annonce["condition"] ?></p>
-                                        </div>
-                                        <div class="aPropos">
-                                            <p> Fin de l'enchère : <?= $annonce["date_de_fin"] ?></p>
-                                            <p> Vendu par : <?= $annonce["id_utilisateur"] ?></p>
-                                            <p> Dernière enchère : <?= $annonce["prix_actuel"] ?></p>
-                                            <p> Encherisseur : X</p>
-                                            <form action="annonce-unique.php" method="GET">
-                                                <button class="bouton" type="submit" name="annonce" value="<?= $annonce["id_annonce"]; ?>">Voir l'annonce</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </article>
-
-                <?php }
+                        if (date("Y-m-d H:i:s") >= $annonce["date_de_fin"]) {
+                            afficherAnnonce($annonce);
+                        }
                     }
                 } ?>
             </section>

@@ -65,7 +65,7 @@ class Utilisateurs
         echo "Entrée dans méthode de MODIFICATION de l'utilisateur via l'instance utilisateur";
 
         global $dbh;
-        $query = $dbh->prepare("UPDATE utilisateurs SET prenom=? , nom=? , email=? , mdp=? WHERE id=?;");
+        $query = $dbh->prepare("UPDATE utilisateurs SET prenom_utilisateur=? , nom_utilisateur=? , email=? , mdp=? WHERE id_utilisateur=?;");
         $result = $query->execute([$this->prenom, $this->nom, $this->email, $this->mdp, $_SESSION["id_utilisateur"]]);
 
         if ($result) {

@@ -2,25 +2,20 @@
 
 // Include du fichier PHP du bandeau de navigation
 include __DIR__ . "/includes/bandeau.includes.php";
-include __DIR__ . "/includes/request.connexion.include.php";
-include __DIR__ . "/includes/profil.annonce.include.php";
-include_once __DIR__ . "/includes/modif_form.include.php";
-include_once __DIR__ . "/includes/request.modif-suppr-profil.include.php";
+// Require du fichier PHP relatif au formulaire de connexion
+require_once __DIR__ . "/includes/request.connexion.include.php";
+// Require du fichier PHP de recupération des annonces dans la bdd filtrées par id_utilisateur
+require_once __DIR__ . "/includes/profil.annonce.include.php";
+// Require du fichier PHP relatif aux annonces publiées
+require_once __DIR__ . "/includes/request.annonce.include.php";
+
+
+
 
 // Traitement de la requête en GET pour la modification / suppresion du profil
 
-$modifier_supprimer = null;
-if (isset($_GET["modifier_supprimer"])) {
-    $modifier_supprimer = $_GET["modifier_supprimer"];
-}
 
-// Require du fichier PHP relatif au formulaire de connexion
-require_once __DIR__ . "/includes/request.connexion.include.php";
 
-// Require du fichier PHP de recupération des annonces dans la bdd filtrées par id_utilisateur
-require_once __DIR__ . "/includes/profil.annonce.include.php";
-
-require_once __DIR__ . "/includes/validation.request.include.php";
 ?>
 
 <!DOCTYPE html>
@@ -55,13 +50,17 @@ require_once __DIR__ . "/includes/validation.request.include.php";
             <h1> Bienvenue sur votre espace personnel <?= $_SESSION["prenom"] ?>. <br> Vous êtes le dresseur n° <?= $_SESSION["id_utilisateur"] ?> .</h2>
 
 
+
                 <!-- Boutons de filtres des annonces -->
 
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
                     <button class="bouton" type="submit" name="filtre" value="publiees">Publiées</button>
                     <button class="bouton" type="submit" name="filtre" value="suivies">Suivies</button>
                     <button class="bouton" type="submit" name="filtre" value="remportees">Remportées</button>
+                    <button class="bouton"><a href="parametres.php">Paramètres</a></button>
                 </form>
+
+
 
                 <!-- Début fonction du filtre -->
 
@@ -72,11 +71,8 @@ require_once __DIR__ . "/includes/validation.request.include.php";
                 // choix par défaut
                 else {
                     $filtre = "publiees";
-                } ?>
-                <!-- Fin fonction du filtre  -->
-
-
-                <?php
+                }
+                // Fin fonction du filtre 
 
                 // Annonces postées
 
@@ -86,40 +82,9 @@ require_once __DIR__ . "/includes/validation.request.include.php";
 
                             // Affichage par défaut des annonces publiées
 
-                            foreach ($annoncesPublieesParId_utilisateur as $index => $annonce) { ?>
-
-                                <article id="annonce">
-                                    <div class="image">
-                                        <img src=" /img/cartePoke.jpeg" alt="carte pokemon" style="width: 100%;">
-                                    </div>
-                                    <div style="width: 73%; padding: 2% 0% 0% 2%;">
-                                        <h2><?= $annonce["nom_pokemon"] ?></h2>
-                                        <div style="display: flex;">
-                                            <div class="aPropos">
-
-                                                <p> Type : <?= $annonce["type"] ?> </p>
-                                                <p> PV : <?= $annonce["pv"] ?> </p>
-                                            </div>
-                                            <div class="aPropos">
-                                                <p> Série n° : <?= $annonce["n_serie"] ?></p>
-                                                <p> Rareté : <?= $annonce["rarete"] ?></p>
-                                                <p> État : <?= $annonce["condition"] ?></p>
-                                            </div>
-                                            <div class="aPropos">
-                                                <p> Fin de l'enchère : <?= $annonce["date_de_fin"] ?></p>
-                                                <p> Vendu par : <?= $annonce["id_utilisateur"] ?></p>
-                                                <p> Dernière enchère : <?= $annonce["prix_actuel"] ?></p>
-                                                <p> Encherisseur : X</p>
-                                                <form action="annonce-unique.php" method="GET">
-                                                    <button class="bouton" type="submit" name="annonce" value="<?= $annonce["id_annonce"]; ?>">Voir l'annonce</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </article>
-
-                        <?php }
+                            foreach ($annoncesPublieesParId_utilisateur as $index => $annonce) {
+                                afficherAnnonce($annonce);
+                            }
                         } ?>
                     </section>
                 <?php
@@ -134,40 +99,9 @@ require_once __DIR__ . "/includes/validation.request.include.php";
                             // Affichage par défaut des annonces publiées
 
                             foreach ($annoncesSuiviesParId_utilisateur as $index => $annonce) {
-                                if (date("Y-m-d H:i:s") <= $annonce["date_de_fin"]) {  ?>
-
-                                    <article id="annonce">
-                                        <div class="image">
-                                            <img src=" /img/cartePoke.jpeg" alt="carte pokemon" style="width: 100%;">
-                                        </div>
-                                        <div style="width: 73%; padding: 2% 0% 0% 2%;">
-                                            <h2><?= $annonce["nom_pokemon"] ?></h2>
-                                            <div style="display: flex;">
-                                                <div class="aPropos">
-
-                                                    <p> Type : <?= $annonce["type"] ?> </p>
-                                                    <p> PV : <?= $annonce["pv"] ?> </p>
-                                                </div>
-                                                <div class="aPropos">
-                                                    <p> Série n° : <?= $annonce["n_serie"] ?></p>
-                                                    <p> Rareté : <?= $annonce["rarete"] ?></p>
-                                                    <p> État : <?= $annonce["condition"] ?></p>
-                                                </div>
-                                                <div class="aPropos">
-                                                    <p> Fin de l'enchère : <?= $annonce["date_de_fin"] ?></p>
-                                                    <p> Vendu par : <?= $annonce["id_utilisateur"] ?></p>
-                                                    <p> Dernière enchère : <?= $annonce["prix_actuel"] ?></p>
-                                                    <p> Encherisseur : X</p>
-                                                    <form action="annonce-unique.php" method="GET">
-                                                        <button class="bouton" type="submit" name="annonce" value="<?= $annonce["id_annonce"]; ?>">Voir l'annonce</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </article>
-
-                        <?php }
+                                if (date("Y-m-d H:i:s") <= $annonce["date_de_fin"]) {
+                                    afficherAnnonce($annonce);
+                                }
                             }
                         } ?>
                     </section>
@@ -183,39 +117,9 @@ require_once __DIR__ . "/includes/validation.request.include.php";
                             // Affichage par défaut des annonces publiées
 
                             foreach ($annoncesRemporteesParId_utilisateur as $index => $annonce) {
-                                if (date("Y-m-d H:i:s") >= $annonce["date_de_fin"]) { ?>
-
-                                    <article id="annonce">
-                                        <div class="image">
-                                            <img src=" /img/cartePoke.jpeg" alt="carte pokemon" style="width: 100%;">
-                                        </div>
-                                        <div style="width: 73%; padding: 2% 0% 0% 2%;">
-                                            <h2><?= $annonce["nom_pokemon"] ?></h2>
-                                            <div style="display: flex;">
-                                                <div class="aPropos">
-
-                                                    <p> Type : <?= $annonce["type"] ?> </p>
-                                                    <p> PV : <?= $annonce["pv"] ?> </p>
-                                                </div>
-                                                <div class="aPropos">
-                                                    <p> Série n° : <?= $annonce["n_serie"] ?></p>
-                                                    <p> Rareté : <?= $annonce["rarete"] ?></p>
-                                                    <p> État : <?= $annonce["condition"] ?></p>
-                                                </div>
-                                                <div class="aPropos">
-                                                    <p> Fin de l'enchère : <?= $annonce["date_de_fin"] ?></p>
-                                                    <p> Vendu par : <?= $annonce["id_utilisateur"] ?></p>
-                                                    <p> Dernière enchère : <?= $annonce["prix_actuel"] ?></p>
-                                                    <p> Encherisseur : X</p>
-                                                    <form action="annonce-unique.php" method="GET">
-                                                        <button class="bouton" type="submit" name="annonce" value="<?= $annonce["id_annonce"]; ?>">Voir l'annonce</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </article>
-                        <?php }
+                                if (date("Y-m-d H:i:s") >= $annonce["date_de_fin"]) {
+                                    afficherAnnonce($annonce);
+                                }
                             }
                         } ?>
                     </section>

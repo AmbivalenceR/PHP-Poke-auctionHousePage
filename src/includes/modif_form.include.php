@@ -4,82 +4,51 @@
  * Affichage du formulaire d'inscription / Connexion Utilisateur
  */
 function afficherModifForm(string $modifier_supprimer)
-{ ?>
+{
+    // Formulaire de modification, récupéré de celui de création 
+    if ($modifier_supprimer == "Modifier") { ?>
+        <form class="formInscription" style="gap: 5px; margin-top: 0;" action="profil.php" method="POST">
 
-
-    <h2>
-        <?php
-        switch ($modifier_supprimer) {
-            case "Modifier":
-                echo "Modifier";
-                break;
-            case "Supprimer":
-                echo "Supprimer";
-                break;
-            default:
-                echo "Souhaitez-vous modifier ou supprimer votre profil de FDP ?";
-        }
-        ?>
-    </h2>
-    <!-- Formulaire de modification, récupéré de celui de création -->
-    <?php if ($modifier_supprimer == "Modifier") { ?>
-        <form action="profil.php" method="POST">
-            <?php echo $_SESSION["id_utilisateur"]; ?>
-
-            <div>
+            <div class="labelAndInput">
                 <label>Prénom :</label>
                 <input class="" type="text" name="prenom" placeholder="Prenom" />
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Nom :</label>
                 <input class="" type="text" name="nom" placeholder="Nom" />
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Email :</label>
                 <input type="email" name="email" placeholder="email">
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Mot de passe :</label>
                 <input type="password" name="mdp" placeholder="mdp">
             </div>
 
-            <div>
+            <div class="labelAndInput">
                 <label>Age :</label>
                 <input type="text" name="age" placeholder="age">
             </div>
 
-            <input type="submit" value="Modifier" />
-
             <input type="hidden" name="modifier_supprimer" value="<?= $modifier_supprimer ?>" />
 
+            <input class="bouton" style="margin-top: 30px;" type="submit" value="Modifier" />
+        </form>
 
-        <?php } ?>
+    <?php }
 
-        <!-- Demande de validation de suppression du profil -->
-        <?php if ($modifier_supprimer == "Supprimer") { ?>
-            <h3>Souhaitez-vous réellement supprimer votre profil de Fan De Pokémon sur PHP ?</h3>
+    // Demande de validation de suppression du profil 
+    if ($modifier_supprimer == "Supprimer") { ?>
+        <p style="text-align: center; margin-top: 3%;">Souhaitez-vous réellement supprimer votre profil de Fan De Pokémon sur PHP ?</p>
 
-            <!--  Redirection vers la page profil.php si l'utilisateur ne confirme pas. -->
-            <form action="deconnexion.php" method="POST">
-
-                <div>
-                    <label>Souhaitez-vous réellement supprimer votre profil de Fan De Pokémon sur PHP ?</label>
-                    <select name="validerSuppression" id="validerSuppression">
-                        <option value="non">NON, je suis un vrai Fan De Pokémon !</option>
-                        <option value="oui">OUI, je suis Fan d'autre chose maintenant... désolé.</option>
-                    </select>
-                    <input type="submit" value="Supprimer">
-                </div>
-
-
-
-            <?php } ?>
-
-            <input type="hidden" name="modifier_supprimer" value="<?= $modifier_supprimer ?>" />
-            </form>
-
-
-        <?php }
+        <!--  Redirection vers la page profil.php si l'utilisateur ne confirme pas. -->
+        <form class="formInscription" style="gap: 5px; margin-top: 0;" action="parametres.php" method="POST">
+            <button class="bouton" type="submit" name="validerSuppression" value="non">Non</button>
+            <button class="bouton" type="submit" name="validerSuppression" value="oui">Oui</button>
+        </form>
+<?php }
+}
